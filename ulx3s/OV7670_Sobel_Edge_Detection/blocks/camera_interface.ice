@@ -102,12 +102,17 @@
           }
         },
         {
-          "id": "6b6459b8-bc69-4585-bbd1-514799d6ec92",
+          "id": "2238a46a-b4f7-4b48-b0c9-ceb40c10f327",
           "type": "basic.output",
           "data": {
             "name": "dout",
-            "range": "[15:0]",
+            "range": "[16:0]",
             "pins": [
+              {
+                "index": "16",
+                "name": "",
+                "value": ""
+              },
               {
                 "index": "15",
                 "name": "",
@@ -193,7 +198,7 @@
           },
           "position": {
             "x": 1568,
-            "y": -192
+            "y": -232
           }
         },
         {
@@ -295,6 +300,96 @@
           }
         },
         {
+          "id": "19eda7de-a5f6-4c93-a176-5d13e46a1406",
+          "type": "basic.output",
+          "data": {
+            "name": "data_count_r_sobel",
+            "range": "[10:0]",
+            "pins": [
+              {
+                "index": "10",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "9",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "8",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "7",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "6",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "5",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "4",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "3",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "2",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "1",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "0",
+                "name": "",
+                "value": ""
+              }
+            ],
+            "virtual": true
+          },
+          "position": {
+            "x": 1784,
+            "y": 56
+          }
+        },
+        {
+          "id": "f06d6ba1-a3d2-45f5-a908-91f11ca5bcc2",
+          "type": "basic.input",
+          "data": {
+            "name": "rd_en_sobel",
+            "pins": [
+              {
+                "index": "0",
+                "name": "NULL",
+                "value": "NULL"
+              }
+            ],
+            "virtual": true,
+            "clock": false
+          },
+          "position": {
+            "x": 1376,
+            "y": 80
+          }
+        },
+        {
           "id": "41933a47-1e4d-44be-9bc0-2f4987c117d5",
           "type": "basic.input",
           "data": {
@@ -312,6 +407,106 @@
           "position": {
             "x": -248,
             "y": 104
+          }
+        },
+        {
+          "id": "9cebc9ee-8618-4819-be6e-2927dec9f1fc",
+          "type": "basic.output",
+          "data": {
+            "name": "dout_sobel",
+            "range": "[16:0]",
+            "pins": [
+              {
+                "index": "16",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "15",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "14",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "13",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "12",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "11",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "10",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "9",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "8",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "7",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "6",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "5",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "4",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "3",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "2",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "1",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "0",
+                "name": "",
+                "value": ""
+              }
+            ],
+            "virtual": true
+          },
+          "position": {
+            "x": 1752,
+            "y": 112
           }
         },
         {
@@ -681,22 +876,10 @@
           }
         },
         {
-          "id": "faf1cb25-7941-48c4-853b-d9dbfc425000",
-          "type": "d907eea7eb67d965d6ff7d29a5b25b149ab2c1c4",
-          "position": {
-            "x": 1312,
-            "y": -376
-          },
-          "size": {
-            "width": 96,
-            "height": 192
-          }
-        },
-        {
           "id": "4b0055df-4e41-45a2-9655-406edc6b891c",
           "type": "basic.code",
           "data": {
-            "code": "\t //FSM state declarations\r\n\t localparam idle=0,\r\n\t\t\t\t\tstart_sccb=1,\r\n\t\t\t\t\twrite_address=2,\r\n\t\t\t\t\twrite_data=3,\r\n\t\t\t\t\tdigest_loop=4,\r\n\t\t\t\t\tdelay=5,\r\n\t\t\t\t\tvsync_fedge=6,\r\n\t\t\t\t\tbyte1=7,\r\n\t\t\t\t\tbyte2=8,\r\n\t\t\t\t\tfifo_write=9,\r\n\t\t\t\t\tstopping=10;\r\n\t\t\t\t\t\r\n\t localparam wait_init=0,\r\n\t\t\t\t\tsccb_idle=1,\r\n\t\t\t\t\tsccb_address=2,\r\n\t\t\t\t\tsccb_data=3,\r\n\t\t\t\t\tsccb_stop=4;\r\n\t\t\t\t\t\r\n\t localparam MSG_INDEX=77; //number of the last index to be digested by SCCB\r\n\t \r\n\t \r\n\t \r\n\t reg[3:0] state_q=0,state_d;\r\n\t reg[2:0] sccb_state_q=0,sccb_state_d;\r\n\t reg[7:0] addr_q,addr_d;\r\n\t reg[7:0] data_q,data_d;\r\n\t reg[7:0] brightness_q,brightness_d;\r\n\t reg[7:0] contrast_q,contrast_d;\r\n\t reg start,stop;\r\n\t reg[7:0] wr_data;\r\n\t reg[7:0] led_q=0,led_d; \r\n\t reg[27:0] delay_q=0,delay_d;\r\n\t reg start_delay_q=0,start_delay_d;\r\n\t reg delay_finish;\r\n\t reg[20:0] message[250:0];\r\n\t reg[7:0] message_index_q=0,message_index_d;\r\n\t reg[15:0] pixel_q,pixel_d;\r\n\t reg wr_en;\r\n\t reg key0_tick,key1_tick,key2_tick,key3_tick;\r\n\t reg key0_prev,key1_prev,key2_prev,key3_prev;\r\n\t \r\n\t wire rd_tick;\r\n\t wire[7:0] rd_data;\r\n\t wire full;\r\n\t \r\n\t //buffer for all inputs coming from the camera\r\n\t reg pclk_1,pclk_2,href_1,href_2,vsync_1,vsync_2;\r\n\t \r\n     initial begin  //read all register configuration values\r\n        if(DATA) $readmemh(DATA,message);\r\n     end\r\n    \r\n\t \r\n\t //register operations\r\n\t always @(posedge clk_100,negedge rst_n) begin\r\n\t\tif(!rst_n) begin\r\n\t\t\tstate_q<=0;\r\n\t\t\tled_q<=0;\r\n\t\t\tdelay_q<=0;\r\n\t\t\tstart_delay_q<=0;\r\n\t\t\tmessage_index_q<=0;\r\n\t\t\tpixel_q<=0;\r\n\t\t\t\r\n\t\t\tsccb_state_q<=0;\r\n\t\t\taddr_q<=0;\r\n\t\t\tdata_q<=0;\r\n\t\t\tbrightness_q<=0;\r\n\t\t\tcontrast_q<=0;\r\n\t\tend\r\n\t\telse begin\r\n\t\t\tstate_q<=state_d;\r\n\t\t\tled_q<=led_d;\r\n\t\t\tdelay_q<=delay_d;\r\n\t\t\tstart_delay_q<=start_delay_d;\r\n\t\t\tmessage_index_q<=message_index_d;\t\t\t\r\n\t\t\tpclk_1<=cmos_pclk; \r\n\t\t\tpclk_2<=pclk_1;\r\n\t\t\thref_1<=cmos_href;\r\n\t\t\thref_2<=href_1;\r\n\t\t\tvsync_1<=cmos_vsync;\r\n\t\t\tvsync_2<=vsync_1;\r\n\t\t\tpixel_q<=pixel_d;\r\n\t\t\t\r\n\t\t\tsccb_state_q<=sccb_state_d;\r\n\t\t\taddr_q<=addr_d;\r\n\t\t\tdata_q<=data_d;\r\n\t\t\tbrightness_q<=brightness_d;\r\n\t\t\tcontrast_q<=contrast_d;\r\n\t\tend\r\n\t end\r\n\t \t \r\n\t \r\n\t //FSM next-state logics\r\n\t always @* begin\r\n\t\tstate_d=state_q;\r\n\t\tled_d=led_q;\r\n\t\tstart=0;\r\n\t\tstop=0;\r\n\t\twr_data=0;\r\n\t\tstart_delay_d=start_delay_q;\r\n\t\tdelay_d=delay_q;\r\n\t\tdelay_finish=0;\r\n\t\tmessage_index_d=message_index_q;\r\n\t\tpixel_d=pixel_q;\r\n\t\twr_en=0;\r\n\t\t\r\n\t\tsccb_state_d=sccb_state_q;\r\n\t\taddr_d=addr_q;\r\n\t\tdata_d=data_q;\r\n\t\tbrightness_d=brightness_q;\r\n\t\tcontrast_d=contrast_q;\r\n\t\t\r\n\t\t//delay logic  \r\n\t\tif(start_delay_q) delay_d=delay_q+1'b1;\r\n\t\tif(delay_q[16] && message_index_q!=(MSG_INDEX+1) && (state_q!=start_sccb))  begin  //delay between SCCB transmissions (0.66ms)\r\n\t\t\tdelay_finish=1;\r\n\t\t\tstart_delay_d=0;\r\n\t\t\tdelay_d=0;\r\n\t\tend\r\n\t\telse if((delay_q[26] && message_index_q==(MSG_INDEX+1)) || (delay_q[26] && state_q==start_sccb)) begin //delay BEFORE SCCB transmission, AFTER SCCB transmission, and BEFORE retrieving pixel data from camera (0.67s)\r\n\t\t\tdelay_finish=1;\r\n\t\t\tstart_delay_d=0;\r\n\t\t\tdelay_d=0;\r\n\t\tend\r\n\t\t\r\n\t\tcase(state_q) \r\n\t\t\r\n\t\t\t\t\t////////Begin: Setting register values of the camera via SCCB///////////\r\n\t\t\t\t\t\r\n\t\t\t  idle:  if(delay_finish) begin //idle for 0.6s to start-up the camera\r\n\t\t\t\t\t\t\tstate_d=start_sccb; \r\n\t\t\t\t\t\t\tstart_delay_d=0;\r\n\t\t\t\t\t\tend\r\n\t\t\t\t\t\telse start_delay_d=1;\r\n\r\n\t\tstart_sccb:  begin   //start of SCCB transmission\r\n\t\t\t\t\t\t\tstart=1;\r\n\t\t\t\t\t\t\twr_data=8'h42; //slave address of OV7670 for write\r\n\t\t\t\t\t\t\tstate_d=write_address;\t\r\n\t\t\t\t\t\tend\r\n\t write_address: if(ack==2'b11) begin \r\n\t\t\t\t\t\t\twr_data=message[message_index_q][15:8]; //write address\r\n\t\t\t\t\t\t\tstate_d=write_data;\r\n\t\t\t\t\t\tend\r\n\t\t write_data: if(ack==2'b11) begin \r\n\t\t\t\t\t\t\twr_data=message[message_index_q][7:0]; //write data\r\n\t\t\t\t\t\t\tstate_d=digest_loop;\r\n\t\t\t\t\t\tend\r\n\t  digest_loop: if(ack==2'b11) begin //stop sccb transmission\r\n\t\t\t\t\t\t\tstop=1;\r\n\t\t\t\t\t\t\tstart_delay_d=1;\r\n\t\t\t\t\t\t\tmessage_index_d=message_index_q+1'b1;\r\n\t\t\t\t\t\t\tstate_d=delay;\r\n\t\t\t\t\t\tend\r\n\t\t\t  delay: begin\r\n\t\t\t\t\t\t\tif(message_index_q==(MSG_INDEX+1) && delay_finish) begin \r\n\t\t\t\t\t\t\t\tstate_d=vsync_fedge; //if all messages are already digested, proceed to retrieving camera pixel data\r\n\t\t\t\t\t\t\t\tled_d=8'b0011_0011; //red LEDs\r\n\t\t\t\t\t\t\tend\r\n\t\t\t\t\t\t\telse if(state==0 && delay_finish) state_d=start_sccb; //small delay before next SCCB transmission(if all messages are not yet digested)\r\n\t\t\t\t\t\tend\r\n\t\t\t  \r\n\t\t\t  \r\n\r\n\t\t\t\t///////////////Begin: Retrieving Pixel Data from Camera to be Stored to SDRAM/////////////////\r\n\t\t\t\t\r\n\t\tvsync_fedge: if(vsync_1==0 && vsync_2==1) state_d=byte1; //vsync falling edge means new frame is incoming\r\n\t\t\t\tbyte1: if(pclk_1==1 && pclk_2==0 && href_1==1 && href_2==1) begin //rising edge of pclk means new pixel data(first byte of 16-bit pixel RGB565) is available at output\r\n\t\t\t\t\t\t\t\tpixel_d[15:8]=cmos_db;\r\n\t\t\t\t\t\t\t\tstate_d=byte2;\r\n\t\t\t\t\t\t end\r\n\t\t\t\t\t\t else if(vsync_1==1 && vsync_2==1) begin\r\n\t\t\t\t\t\t\tstate_d=vsync_fedge;\r\n\t\t\t\t\t\t end\r\n\t\t\t\tbyte2: if(pclk_1==1 && pclk_2==0 && href_1==1 && href_2==1) begin //rising edge of pclk means new pixel data(second byte of 16-bit pixel RGB565) is available at output\r\n\t\t\t\t\t\t\t\tpixel_d[7:0]=cmos_db;\r\n\t\t\t\t\t\t\t\tstate_d=fifo_write;\r\n\t\t\t\t\t\t end\r\n\t\t\t\t\t\t else if(vsync_1==1 && vsync_2==1) begin\r\n\t\t\t\t\t\t\tstate_d=vsync_fedge;\r\n\t\t\t\t\t\t end\r\n\t\t fifo_write: begin //write the 16-bit data to asynchronous fifo to be retrieved later by SDRAM\r\n\t\t\t\t\t\t\t\twr_en=1;\r\n\t\t\t\t\t\t\t\tstate_d=byte1;\r\n\t\t\t\t\t\t\t\tled_d=8'b1100_1100; //debugging led\r\n\t\t\t\t\t\t end\r\n\t\tdefault: state_d=idle;\r\n\t\tendcase\r\n\t\t\r\n\t\t//Logic for increasing/decreasing brightness and contrast via the 4 keybuttons\r\n\t\tcase(sccb_state_q)\r\n\t\t\twait_init: if(state_q==byte1) begin //wait for initial SCCB transmission to finish\r\n\t\t\t\t\t\t\tsccb_state_d=sccb_idle;\r\n\t\t\t\t\t\t\taddr_d=0;\r\n\t\t\t\t\t\t\tdata_d=0;\r\n\t\t\t\t\t\t\tbrightness_d=8'h00; \r\n\t\t\t\t\t\t\tcontrast_d=8'h40;\r\n\t\t\t\t\t\t  end\r\n\t\t\tsccb_idle: if(state==0) begin //wait for any pushbutton\r\n\t\t\t\t\t\t\t\tif(key0_tick) begin//increase brightness\r\n\t\t\t\t\t\t\t\t\tbrightness_d=(brightness_q[7]==1)? brightness_q-5:brightness_q+5;\r\n\t\t\t\t\t\t\t\t\tif(brightness_q==8'h80) brightness_d=0;\r\n\t\t\t\t\t\t\t\t\tstart=1;\r\n\t\t\t\t\t\t\t\t\twr_data=8'h42; //slave address of OV7670 for write\r\n\t\t\t\t\t\t\t\t\taddr_d=8'h55; //brightness control address\r\n\t\t\t\t\t\t\t\t\tdata_d=brightness_d;\r\n\t\t\t\t\t\t\t\t\tsccb_state_d=sccb_address;\r\n\t\t\t\t\t\t\t\t\tled_d=0;\r\n\t\t\t\t\t\t\t\tend\r\n\t\t\t\t\t\t\t\tif(key1_tick) begin //decrease brightness\r\n\t\t\t\t\t\t\t\t\tbrightness_d=(brightness_q[7]==1)? brightness_q+5:brightness_q-5;\r\n\t\t\t\t\t\t\t\t\tif(brightness_q==0) brightness_d=8'h80;\r\n\t\t\t\t\t\t\t\t\tstart=1;\r\n\t\t\t\t\t\t\t\t\twr_data=8'h42; \r\n\t\t\t\t\t\t\t\t\taddr_d=8'h55;\r\n\t\t\t\t\t\t\t\t\tdata_d=brightness_d;\r\n\t\t\t\t\t\t\t\t\tsccb_state_d=sccb_address;\r\n\t\t\t\t\t\t\t\t\tled_d=0;\r\n\t\t\t\t\t\t\t\tend\r\n\t\t\t\t\t\t\t\telse if(key2_tick) begin //increase contrast\r\n\t\t\t\t\t\t\t\t\tcontrast_d=contrast_q+5;\r\n\t\t\t\t\t\t\t\t\tstart=1;\r\n\t\t\t\t\t\t\t\t\twr_data=8'h42; //slave address of OV7670 for write\r\n\t\t\t\t\t\t\t\t\taddr_d=8'h56; //contrast control address\r\n\t\t\t\t\t\t\t\t\tdata_d=contrast_d;\r\n\t\t\t\t\t\t\t\t\tsccb_state_d=sccb_address;\r\n\t\t\t\t\t\t\t\t\tled_d=0;\r\n\t\t\t\t\t\t\t\tend\r\n\t\t\t\t\t\t\t\telse if(key3_tick) begin //change contrast\r\n\t\t\t\t\t\t\t\t\tcontrast_d=contrast_q-5;\r\n\t\t\t\t\t\t\t\t\tstart=1;\r\n\t\t\t\t\t\t\t\t\twr_data=8'h42;\r\n\t\t\t\t\t\t\t\t\taddr_d=8'h56;\r\n\t\t\t\t\t\t\t\t\tdata_d=contrast_d;\r\n\t\t\t\t\t\t\t\t\tsccb_state_d=sccb_address;\r\n\t\t\t\t\t\t\t\t\tled_d=0;\r\n\t\t\t\t\t\t\t\tend\r\n\t\t\t\t\t\t  end\r\n\t\tsccb_address: if(ack==2'b11) begin \r\n\t\t\t\t\t\t\twr_data=addr_q; //write address\r\n\t\t\t\t\t\t\tsccb_state_d=sccb_data;\r\n\t\t\t\t\t\tend\r\n\t\t  sccb_data: if(ack==2'b11) begin \r\n\t\t\t\t\t\t\twr_data=data_q; //write databyte\r\n\t\t\t\t\t\t\tsccb_state_d=sccb_stop;\r\n\t\t\t\t\t\t end\r\n\t\t  sccb_stop: if(ack==2'b11) begin //stop\r\n\t\t\t\t\t\t\tstop=1;\r\n\t\t\t\t\t\t\tsccb_state_d=sccb_idle;\r\n\t\t\t\t\t\t\tled_d=4'b1001;\r\n\t\t\t\t\t\t end\r\n\t\t\t default: sccb_state_d=wait_init;\r\n\t\tendcase\r\n\t\t\r\n\t end\r\n\t \r\n\r\n\t assign cmos_pwdn=0; //fixed at ground\r\n\t assign cmos_rst_n=1; //fixed at high\r\n\t \r\n\t assign led=led_q; //debugging LED , non-red LED if no problem\r\n\t \r\n\t always @(posedge clk_100) begin\r\n    \t key0_prev<=key0;\r\n    \t key1_prev<=key1;\r\n    \t key2_prev<=key2;\r\n    \t key3_prev<=key3;\r\n    \t \r\n    \t key0_tick=!key0_prev && key0;\r\n    \t key1_tick=!key1_prev && key1;\r\n    \t key2_tick=!key2_prev && key2;\r\n    \t key3_tick=!key3_prev && key3;\r\n\t end\r\n\t ",
+            "code": "\t //FSM state declarations\r\n\t localparam idle=0,\r\n\t\t\t\t\tstart_sccb=1,\r\n\t\t\t\t\twrite_address=2,\r\n\t\t\t\t\twrite_data=3,\r\n\t\t\t\t\tdigest_loop=4,\r\n\t\t\t\t\tdelay=5,\r\n\t\t\t\t\tvsync_fedge=6,\r\n\t\t\t\t\tbyte1=7,\r\n\t\t\t\t\tbyte2=8,\r\n\t\t\t\t\tfifo_write=9,\r\n\t\t\t\t\tstopping=10;\r\n\t\t\t\t\t\r\n\t localparam wait_init=0,\r\n\t\t\t\t\tsccb_idle=1,\r\n\t\t\t\t\tsccb_address=2,\r\n\t\t\t\t\tsccb_data=3,\r\n\t\t\t\t\tsccb_stop=4;\r\n\t\t\t\t\t\r\n\t localparam MSG_INDEX=77; //number of the last index to be digested by SCCB\r\n\t \r\n\t \r\n\t \r\n\t reg[3:0] state_q=0,state_d;\r\n\t reg[2:0] sccb_state_q=0,sccb_state_d;\r\n\t reg[7:0] addr_q,addr_d;\r\n\t reg[7:0] data_q,data_d;\r\n\t reg[7:0] brightness_q,brightness_d;\r\n\t reg[7:0] contrast_q,contrast_d;\r\n\t reg start,stop;\r\n\t reg[7:0] wr_data;\r\n\t reg[7:0] led_q=0,led_d; \r\n\t reg[27:0] delay_q=0,delay_d;\r\n\t reg start_delay_q=0,start_delay_d;\r\n\t reg delay_finish;\r\n\t reg[20:0] message[250:0];\r\n\t reg[7:0] message_index_q=0,message_index_d;\r\n\t reg[16:0] pixel_q,pixel_d;\r\n\t reg wr_en;\r\n\t reg key0_tick,key1_tick,key2_tick,key3_tick;\r\n\t reg key0_prev,key1_prev,key2_prev,key3_prev;\r\n\t \r\n\t wire rd_tick;\r\n\t wire[7:0] rd_data;\r\n\t wire full;\r\n\t \r\n\t //buffer for all inputs coming from the camera\r\n\t reg pclk_1,pclk_2,href_1,href_2,vsync_1,vsync_2;\r\n\t \r\n     initial begin  //read all register configuration values\r\n        if(DATA) $readmemh(DATA,message);\r\n     end\r\n    \r\n\t \r\n\t //register operations\r\n\t always @(posedge clk_100,negedge rst_n) begin\r\n\t\tif(!rst_n) begin\r\n\t\t\tstate_q<=0;\r\n\t\t\tled_q<=0;\r\n\t\t\tdelay_q<=0;\r\n\t\t\tstart_delay_q<=0;\r\n\t\t\tmessage_index_q<=0;\r\n\t\t\tpixel_q<=0;\r\n\t\t\t\r\n\t\t\tsccb_state_q<=0;\r\n\t\t\taddr_q<=0;\r\n\t\t\tdata_q<=0;\r\n\t\t\tbrightness_q<=0;\r\n\t\t\tcontrast_q<=0;\r\n\t\tend\r\n\t\telse begin\r\n\t\t\tstate_q<=state_d;\r\n\t\t\tled_q<=led_d;\r\n\t\t\tdelay_q<=delay_d;\r\n\t\t\tstart_delay_q<=start_delay_d;\r\n\t\t\tmessage_index_q<=message_index_d;\t\t\t\r\n\t\t\tpclk_1<=cmos_pclk; \r\n\t\t\tpclk_2<=pclk_1;\r\n\t\t\thref_1<=cmos_href;\r\n\t\t\thref_2<=href_1;\r\n\t\t\tvsync_1<=cmos_vsync;\r\n\t\t\tvsync_2<=vsync_1;\r\n\t\t\tpixel_q<=pixel_d;\r\n\t\t\t\r\n\t\t\tsccb_state_q<=sccb_state_d;\r\n\t\t\taddr_q<=addr_d;\r\n\t\t\tdata_q<=data_d;\r\n\t\t\tbrightness_q<=brightness_d;\r\n\t\t\tcontrast_q<=contrast_d;\r\n\t\tend\r\n\t end\r\n\t \t \r\n\t \r\n\t //FSM next-state logics\r\n\t always @* begin\r\n\t\tstate_d=state_q;\r\n\t\tled_d=led_q;\r\n\t\tstart=0;\r\n\t\tstop=0;\r\n\t\twr_data=0;\r\n\t\tstart_delay_d=start_delay_q;\r\n\t\tdelay_d=delay_q;\r\n\t\tdelay_finish=0;\r\n\t\tmessage_index_d=message_index_q;\r\n\t\tpixel_d=pixel_q;\r\n\t\twr_en=0;\r\n\t\t\r\n\t\tsccb_state_d=sccb_state_q;\r\n\t\taddr_d=addr_q;\r\n\t\tdata_d=data_q;\r\n\t\tbrightness_d=brightness_q;\r\n\t\tcontrast_d=contrast_q;\r\n\t\t\r\n\t\t//delay logic  \r\n\t\tif(start_delay_q) delay_d=delay_q+1'b1;\r\n\t\tif(delay_q[16] && message_index_q!=(MSG_INDEX+1) && (state_q!=start_sccb))  begin  //delay between SCCB transmissions (0.66ms)\r\n\t\t\tdelay_finish=1;\r\n\t\t\tstart_delay_d=0;\r\n\t\t\tdelay_d=0;\r\n\t\tend\r\n\t\telse if((delay_q[26] && message_index_q==(MSG_INDEX+1)) || (delay_q[26] && state_q==start_sccb)) begin //delay BEFORE SCCB transmission, AFTER SCCB transmission, and BEFORE retrieving pixel data from camera (0.67s)\r\n\t\t\tdelay_finish=1;\r\n\t\t\tstart_delay_d=0;\r\n\t\t\tdelay_d=0;\r\n\t\tend\r\n\t\t\r\n\t\tcase(state_q) \r\n\t\t\r\n\t\t\t\t\t////////Begin: Setting register values of the camera via SCCB///////////\r\n\t\t\t\t\t\r\n\t\t\t  idle:  if(delay_finish) begin //idle for 0.6s to start-up the camera\r\n\t\t\t\t\t\t\tstate_d=start_sccb; \r\n\t\t\t\t\t\t\tstart_delay_d=0;\r\n\t\t\t\t\t\tend\r\n\t\t\t\t\t\telse start_delay_d=1;\r\n\r\n\t\tstart_sccb:  begin   //start of SCCB transmission\r\n\t\t\t\t\t\t\tstart=1;\r\n\t\t\t\t\t\t\twr_data=8'h42; //slave address of OV7670 for write\r\n\t\t\t\t\t\t\tstate_d=write_address;\t\r\n\t\t\t\t\t\tend\r\n\t write_address: if(ack==2'b11) begin \r\n\t\t\t\t\t\t\twr_data=message[message_index_q][15:8]; //write address\r\n\t\t\t\t\t\t\tstate_d=write_data;\r\n\t\t\t\t\t\tend\r\n\t\t write_data: if(ack==2'b11) begin \r\n\t\t\t\t\t\t\twr_data=message[message_index_q][7:0]; //write data\r\n\t\t\t\t\t\t\tstate_d=digest_loop;\r\n\t\t\t\t\t\tend\r\n\t  digest_loop: if(ack==2'b11) begin //stop sccb transmission\r\n\t\t\t\t\t\t\tstop=1;\r\n\t\t\t\t\t\t\tstart_delay_d=1;\r\n\t\t\t\t\t\t\tmessage_index_d=message_index_q+1'b1;\r\n\t\t\t\t\t\t\tstate_d=delay;\r\n\t\t\t\t\t\tend\r\n\t\t\t  delay: begin\r\n\t\t\t\t\t\t\tif(message_index_q==(MSG_INDEX+1) && delay_finish) begin \r\n\t\t\t\t\t\t\t\tstate_d=vsync_fedge; //if all messages are already digested, proceed to retrieving camera pixel data\r\n\t\t\t\t\t\t\t\tled_d=8'b0011_0011; //red LEDs\r\n\t\t\t\t\t\t\tend\r\n\t\t\t\t\t\t\telse if(state==0 && delay_finish) state_d=start_sccb; //small delay before next SCCB transmission(if all messages are not yet digested)\r\n\t\t\t\t\t\tend\r\n\t\t\t  \r\n\t\t\t  \r\n\r\n\t\t\t///////////////Begin: Retrieving Pixel Data from Camera to be Stored to SDRAM/////////////////\r\n\t\t\t\t\r\n\t\tvsync_fedge: if(vsync_1==1 && vsync_2==1) begin\t\r\n\t\t\t\t\t\t\tstate_d=byte1; //vsync falling edge means new frame is incoming\r\n\t\t\t\t\t\t\tpixel_d[16]=1;\r\n\t\t\t\t\t end\r\n\t\t\t\tbyte1: begin\r\n\t\t\t\t\t\tif(pclk_1==1 && pclk_2==0 && href_1==1 && href_2==1) begin //rising edge of pclk means new pixel data(first byte of 16-bit pixel RGB565) is available at output\r\n\t\t\t\t\t\t\t\tpixel_d[15:8]=cmos_db;\r\n\t\t\t\t\t\t\t\tstate_d=byte2;\r\n\t\t\t\t\t\t end\r\n\t\t\t\t\t\t else if(vsync_1==1 && vsync_2==1) begin //new frame incoming\r\n\t\t\t\t\t\t\tpixel_d[16]=1;\r\n\t\t\t\t\t\t end\r\n\t\t\t\t\t  end\r\n\t\t\t\tbyte2: if(pclk_1==1 && pclk_2==0 && href_1==1 && href_2==1) begin //rising edge of pclk means new pixel data(second byte of 16-bit pixel RGB565) is available at output\r\n\t\t\t\t\t\t\t\tpixel_d[7:0]=cmos_db;\r\n\t\t\t\t\t\t\t\tstate_d=fifo_write;\r\n\t\t\t\t\t\t\t\t//count_d=(count_q<307200)? (count_q+1'b1):0;\r\n\t\t\t\t\t\t end\r\n\t\t\t\t\t\t else if(vsync_1==1 && vsync_2==1) begin\r\n\t\t\t\t\t\t\tstate_d=vsync_fedge;\r\n\t\t\t\t\t\t end\r\n\t\t fifo_write: begin //write the 16-bit data to asynchronous fifo to be retrieved later by SDRAM\r\n\t\t\t\t\t\t\t\twr_en=1;\r\n\t\t\t\t\t\t\t\tstate_d=byte1;\r\n\t\t\t\t\t\t\t\tled_d=8'b1100_1100; //debugging led\r\n\t\t\t\t\t\t\t\tpixel_d[16]=0;\r\n\t\t\t\t\t\t end\r\n\t\tdefault: state_d=idle;\r\n\t\tendcase\r\n\t\t\r\n\t\t//Logic for increasing/decreasing brightness and contrast via the 4 keybuttons\r\n\t\tcase(sccb_state_q)\r\n\t\t\twait_init: if(state_q==byte1) begin //wait for initial SCCB transmission to finish\r\n\t\t\t\t\t\t\tsccb_state_d=sccb_idle;\r\n\t\t\t\t\t\t\taddr_d=0;\r\n\t\t\t\t\t\t\tdata_d=0;\r\n\t\t\t\t\t\t\tbrightness_d=8'h00; \r\n\t\t\t\t\t\t\tcontrast_d=8'h40;\r\n\t\t\t\t\t\t  end\r\n\t\t\tsccb_idle: if(state==0) begin //wait for any pushbutton\r\n\t\t\t\t\t\t\t\tif(key0_tick) begin//increase brightness\r\n\t\t\t\t\t\t\t\t\tbrightness_d=(brightness_q[7]==1)? brightness_q-5:brightness_q+5;\r\n\t\t\t\t\t\t\t\t\tif(brightness_q==8'h80) brightness_d=0;\r\n\t\t\t\t\t\t\t\t\tstart=1;\r\n\t\t\t\t\t\t\t\t\twr_data=8'h42; //slave address of OV7670 for write\r\n\t\t\t\t\t\t\t\t\taddr_d=8'h55; //brightness control address\r\n\t\t\t\t\t\t\t\t\tdata_d=brightness_d;\r\n\t\t\t\t\t\t\t\t\tsccb_state_d=sccb_address;\r\n\t\t\t\t\t\t\t\t\tled_d=0;\r\n\t\t\t\t\t\t\t\tend\r\n\t\t\t\t\t\t\t\tif(key1_tick) begin //decrease brightness\r\n\t\t\t\t\t\t\t\t\tbrightness_d=(brightness_q[7]==1)? brightness_q+5:brightness_q-5;\r\n\t\t\t\t\t\t\t\t\tif(brightness_q==0) brightness_d=8'h80;\r\n\t\t\t\t\t\t\t\t\tstart=1;\r\n\t\t\t\t\t\t\t\t\twr_data=8'h42; \r\n\t\t\t\t\t\t\t\t\taddr_d=8'h55;\r\n\t\t\t\t\t\t\t\t\tdata_d=brightness_d;\r\n\t\t\t\t\t\t\t\t\tsccb_state_d=sccb_address;\r\n\t\t\t\t\t\t\t\t\tled_d=0;\r\n\t\t\t\t\t\t\t\tend\r\n\t\t\t\t\t\t\t\telse if(key2_tick) begin //increase contrast\r\n\t\t\t\t\t\t\t\t\tcontrast_d=contrast_q+5;\r\n\t\t\t\t\t\t\t\t\tstart=1;\r\n\t\t\t\t\t\t\t\t\twr_data=8'h42; //slave address of OV7670 for write\r\n\t\t\t\t\t\t\t\t\taddr_d=8'h56; //contrast control address\r\n\t\t\t\t\t\t\t\t\tdata_d=contrast_d;\r\n\t\t\t\t\t\t\t\t\tsccb_state_d=sccb_address;\r\n\t\t\t\t\t\t\t\t\tled_d=0;\r\n\t\t\t\t\t\t\t\tend\r\n\t\t\t\t\t\t\t\telse if(key3_tick) begin //change contrast\r\n\t\t\t\t\t\t\t\t\tcontrast_d=contrast_q-5;\r\n\t\t\t\t\t\t\t\t\tstart=1;\r\n\t\t\t\t\t\t\t\t\twr_data=8'h42;\r\n\t\t\t\t\t\t\t\t\taddr_d=8'h56;\r\n\t\t\t\t\t\t\t\t\tdata_d=contrast_d;\r\n\t\t\t\t\t\t\t\t\tsccb_state_d=sccb_address;\r\n\t\t\t\t\t\t\t\t\tled_d=0;\r\n\t\t\t\t\t\t\t\tend\r\n\t\t\t\t\t\t  end\r\n\t\tsccb_address: if(ack==2'b11) begin \r\n\t\t\t\t\t\t\twr_data=addr_q; //write address\r\n\t\t\t\t\t\t\tsccb_state_d=sccb_data;\r\n\t\t\t\t\t\tend\r\n\t\t  sccb_data: if(ack==2'b11) begin \r\n\t\t\t\t\t\t\twr_data=data_q; //write databyte\r\n\t\t\t\t\t\t\tsccb_state_d=sccb_stop;\r\n\t\t\t\t\t\t end\r\n\t\t  sccb_stop: if(ack==2'b11) begin //stop\r\n\t\t\t\t\t\t\tstop=1;\r\n\t\t\t\t\t\t\tsccb_state_d=sccb_idle;\r\n\t\t\t\t\t\t\tled_d=4'b1001;\r\n\t\t\t\t\t\t end\r\n\t\t\t default: sccb_state_d=wait_init;\r\n\t\tendcase\r\n\t\t\r\n\t end\r\n\t \r\n\r\n\t assign cmos_pwdn=0; //fixed at ground\r\n\t assign cmos_rst_n=1; //fixed at high\r\n\t \r\n\t assign led=led_q; //debugging LED , non-red LED if no problem\r\n\t \r\n\t always @(posedge clk_100) begin\r\n    \t key0_prev<=key0;\r\n    \t key1_prev<=key1;\r\n    \t key2_prev<=key2;\r\n    \t key3_prev<=key3;\r\n    \t \r\n    \t key0_tick=!key0_prev && key0;\r\n    \t key1_tick=!key1_prev && key1;\r\n    \t key2_tick=!key2_prev && key2;\r\n    \t key3_tick=!key3_prev && key3;\r\n\t end\r\n\t ",
             "params": [
               {
                 "name": "DATA"
@@ -775,8 +958,8 @@
                 },
                 {
                   "name": "pixel_q",
-                  "range": "[15:0]",
-                  "size": 16
+                  "range": "[16:0]",
+                  "size": 17
                 }
               ]
             }
@@ -788,6 +971,30 @@
           "size": {
             "width": 864,
             "height": 760
+          }
+        },
+        {
+          "id": "b2e573fd-4f9c-44a5-9eae-c7e1c1226658",
+          "type": "0644e64041fd2cc60d336d0cfeb3961e5ca9ab90",
+          "position": {
+            "x": 1312,
+            "y": -376
+          },
+          "size": {
+            "width": 96,
+            "height": 192
+          }
+        },
+        {
+          "id": "b97a601b-3d40-493b-a458-5862327399dd",
+          "type": "e6a15054cb5e8937be2399f027d21639ba8d2902",
+          "position": {
+            "x": 1528,
+            "y": -32
+          },
+          "size": {
+            "width": 96,
+            "height": 192
           }
         }
       ],
@@ -1068,7 +1275,7 @@
             "port": "out"
           },
           "target": {
-            "block": "faf1cb25-7941-48c4-853b-d9dbfc425000",
+            "block": "b2e573fd-4f9c-44a5-9eae-c7e1c1226658",
             "port": "d5133b14-8949-42d9-abde-a580b73e0117"
           },
           "vertices": [
@@ -1084,7 +1291,7 @@
             "port": "out"
           },
           "target": {
-            "block": "faf1cb25-7941-48c4-853b-d9dbfc425000",
+            "block": "b2e573fd-4f9c-44a5-9eae-c7e1c1226658",
             "port": "3249211a-b2cd-4941-9d1a-546ccd37346a"
           },
           "vertices": [
@@ -1104,7 +1311,7 @@
             "port": "out"
           },
           "target": {
-            "block": "faf1cb25-7941-48c4-853b-d9dbfc425000",
+            "block": "b2e573fd-4f9c-44a5-9eae-c7e1c1226658",
             "port": "7369df1f-28d3-4c2e-bdac-d425afd5f280"
           },
           "vertices": [
@@ -1120,7 +1327,7 @@
             "port": "wr_en"
           },
           "target": {
-            "block": "faf1cb25-7941-48c4-853b-d9dbfc425000",
+            "block": "b2e573fd-4f9c-44a5-9eae-c7e1c1226658",
             "port": "2b26ad98-ae4c-41cb-8a36-e0ec12ca5438"
           },
           "vertices": [
@@ -1136,30 +1343,9 @@
             "port": "out"
           },
           "target": {
-            "block": "faf1cb25-7941-48c4-853b-d9dbfc425000",
+            "block": "b2e573fd-4f9c-44a5-9eae-c7e1c1226658",
             "port": "c299b4bf-bcfb-4497-acab-9484123dfa89"
           }
-        },
-        {
-          "source": {
-            "block": "4b0055df-4e41-45a2-9655-406edc6b891c",
-            "port": "pixel_q"
-          },
-          "target": {
-            "block": "faf1cb25-7941-48c4-853b-d9dbfc425000",
-            "port": "f8f3d4ff-9aba-4a33-8bc8-7fa5a1e921cb"
-          },
-          "vertices": [
-            {
-              "x": 1160,
-              "y": 8
-            },
-            {
-              "x": 1088,
-              "y": 632
-            }
-          ],
-          "size": 16
         },
         {
           "source": {
@@ -1206,7 +1392,7 @@
         },
         {
           "source": {
-            "block": "faf1cb25-7941-48c4-853b-d9dbfc425000",
+            "block": "b2e573fd-4f9c-44a5-9eae-c7e1c1226658",
             "port": "a4d9a19d-aba7-4a9f-afcc-0b35ad590e9a"
           },
           "target": {
@@ -1214,23 +1400,6 @@
             "port": "in"
           },
           "size": 11
-        },
-        {
-          "source": {
-            "block": "faf1cb25-7941-48c4-853b-d9dbfc425000",
-            "port": "39710cbf-d7ed-4871-a865-fdddba67bc2b"
-          },
-          "target": {
-            "block": "6b6459b8-bc69-4585-bbd1-514799d6ec92",
-            "port": "in"
-          },
-          "vertices": [
-            {
-              "x": 1552,
-              "y": -192
-            }
-          ],
-          "size": 16
         },
         {
           "source": {
@@ -1321,6 +1490,145 @@
               "y": 640
             }
           ]
+        },
+        {
+          "source": {
+            "block": "055670a7-e09f-42b6-9f1f-2dd67a433e58",
+            "port": "out"
+          },
+          "target": {
+            "block": "b97a601b-3d40-493b-a458-5862327399dd",
+            "port": "d5133b14-8949-42d9-abde-a580b73e0117"
+          },
+          "vertices": [
+            {
+              "x": 1264,
+              "y": -88
+            }
+          ]
+        },
+        {
+          "source": {
+            "block": "3e18810c-61f1-4484-afd7-ddb75e515841",
+            "port": "out"
+          },
+          "target": {
+            "block": "b97a601b-3d40-493b-a458-5862327399dd",
+            "port": "3249211a-b2cd-4941-9d1a-546ccd37346a"
+          },
+          "vertices": [
+            {
+              "x": 1264,
+              "y": -96
+            }
+          ]
+        },
+        {
+          "source": {
+            "block": "a222c69c-f91b-463a-9b08-24f443b4e9d3",
+            "port": "out"
+          },
+          "target": {
+            "block": "b97a601b-3d40-493b-a458-5862327399dd",
+            "port": "7369df1f-28d3-4c2e-bdac-d425afd5f280"
+          },
+          "vertices": [
+            {
+              "x": 1688,
+              "y": 808
+            },
+            {
+              "x": 1400,
+              "y": 232
+            }
+          ]
+        },
+        {
+          "source": {
+            "block": "4b0055df-4e41-45a2-9655-406edc6b891c",
+            "port": "wr_en"
+          },
+          "target": {
+            "block": "b97a601b-3d40-493b-a458-5862327399dd",
+            "port": "2b26ad98-ae4c-41cb-8a36-e0ec12ca5438"
+          },
+          "vertices": [
+            {
+              "x": 1184,
+              "y": 72
+            }
+          ]
+        },
+        {
+          "source": {
+            "block": "f06d6ba1-a3d2-45f5-a908-91f11ca5bcc2",
+            "port": "out"
+          },
+          "target": {
+            "block": "b97a601b-3d40-493b-a458-5862327399dd",
+            "port": "c299b4bf-bcfb-4497-acab-9484123dfa89"
+          }
+        },
+        {
+          "source": {
+            "block": "b97a601b-3d40-493b-a458-5862327399dd",
+            "port": "a4d9a19d-aba7-4a9f-afcc-0b35ad590e9a"
+          },
+          "target": {
+            "block": "19eda7de-a5f6-4c93-a176-5d13e46a1406",
+            "port": "in"
+          },
+          "size": 11
+        },
+        {
+          "source": {
+            "block": "4b0055df-4e41-45a2-9655-406edc6b891c",
+            "port": "pixel_q"
+          },
+          "target": {
+            "block": "b2e573fd-4f9c-44a5-9eae-c7e1c1226658",
+            "port": "9347b8a9-b94b-4261-8455-428c88b41a6c"
+          },
+          "vertices": [
+            {
+              "x": 1184,
+              "y": 528
+            }
+          ],
+          "size": 17
+        },
+        {
+          "source": {
+            "block": "4b0055df-4e41-45a2-9655-406edc6b891c",
+            "port": "pixel_q"
+          },
+          "target": {
+            "block": "b97a601b-3d40-493b-a458-5862327399dd",
+            "port": "9347b8a9-b94b-4261-8455-428c88b41a6c"
+          },
+          "size": 17
+        },
+        {
+          "source": {
+            "block": "b97a601b-3d40-493b-a458-5862327399dd",
+            "port": "e9da3b0e-4156-4c92-8675-e6d416a200c9"
+          },
+          "target": {
+            "block": "9cebc9ee-8618-4819-be6e-2927dec9f1fc",
+            "port": "in"
+          },
+          "size": 17
+        },
+        {
+          "source": {
+            "block": "b2e573fd-4f9c-44a5-9eae-c7e1c1226658",
+            "port": "e9da3b0e-4156-4c92-8675-e6d416a200c9"
+          },
+          "target": {
+            "block": "2238a46a-b4f7-4b48-b0c9-ceb40c10f327",
+            "port": "in"
+          },
+          "size": 17
         }
       ]
     }
@@ -1846,7 +2154,7 @@
         }
       }
     },
-    "d907eea7eb67d965d6ff7d29a5b25b149ab2c1c4": {
+    "0644e64041fd2cc60d336d0cfeb3961e5ca9ab90": {
       "package": {
         "name": "asyn_fifo",
         "version": "",
@@ -1954,15 +2262,15 @@
               }
             },
             {
-              "id": "39710cbf-d7ed-4871-a865-fdddba67bc2b",
+              "id": "e9da3b0e-4156-4c92-8675-e6d416a200c9",
               "type": "basic.output",
               "data": {
                 "name": "data_read",
-                "range": "[15:0]",
-                "size": 16
+                "range": "[16:0]",
+                "size": 17
               },
               "position": {
-                "x": 1288,
+                "x": 1296,
                 "y": 440
               }
             },
@@ -1979,13 +2287,13 @@
               }
             },
             {
-              "id": "f8f3d4ff-9aba-4a33-8bc8-7fa5a1e921cb",
+              "id": "9347b8a9-b94b-4261-8455-428c88b41a6c",
               "type": "basic.input",
               "data": {
                 "name": "data_write",
-                "range": "[15:0]",
+                "range": "[16:0]",
                 "clock": false,
-                "size": 16
+                "size": 17
               },
               "position": {
                 "x": 888,
@@ -1996,7 +2304,7 @@
               "id": "970fe62e-ffcd-403a-9592-b44e4285fc31",
               "type": "basic.code",
               "data": {
-                "code": " \t localparam DATA_WIDTH=16,\r\n\t            FIFO_DEPTH_WIDTH=11,\r\n\t            FIFO_DEPTH=2**FIFO_DEPTH_WIDTH;\r\n\t \r\n\t initial begin\r\n\t\tfull=0;\r\n\t\tempty=1;\r\n\t end\r\n\t \r\n\t reg full, empty;\r\n\t reg[10:0] data_count_r,data_count_w;\r\n\t \r\n\t ///////////////////WRITE CLOCK DOMAIN//////////////////////////////\r\n\t reg[FIFO_DEPTH_WIDTH:0] w_ptr_q=0; //binary counter for write pointer\r\n\t reg[FIFO_DEPTH_WIDTH:0] r_ptr_sync; //binary pointer for read pointer sync to write clk\r\n\t wire[FIFO_DEPTH_WIDTH:0] w_grey,w_grey_nxt; //grey counter for write pointer\r\n\t reg[FIFO_DEPTH_WIDTH:0] r_grey_sync; //grey counter for the read pointer synchronized to write clock\r\n\t \r\n\t reg[3:0] i; //log_2(FIFO_DEPTH_WIDTH)\r\n\t \r\n\t assign w_grey=w_ptr_q^(w_ptr_q>>1); //binary to grey code conversion for current write pointer\r\n\t assign w_grey_nxt=(w_ptr_q+1'b1)^((w_ptr_q+1'b1)>>1);  //next grey code\r\n\t assign we= write && !full; \r\n\t \r\n\t //register operation\r\n\t always @(posedge clk_write,negedge rst_n) begin\r\n\t\tif(!rst_n) begin\r\n\t\t\tw_ptr_q<=0;\r\n\t\t\tfull<=0;\r\n\t\tend\r\n\t\telse begin\r\n\t\t\tif(write && !full) begin //write condition\r\n\t\t\t\tw_ptr_q<=w_ptr_q+1'b1; \r\n\t\t\t\tfull <= w_grey_nxt == {~r_grey_sync[FIFO_DEPTH_WIDTH:FIFO_DEPTH_WIDTH-1],r_grey_sync[FIFO_DEPTH_WIDTH-2:0]}; //algorithm for full logic which can be observed on the grey code table\r\n\t\t\tend\r\n\t\t\telse full <= w_grey == {~r_grey_sync[FIFO_DEPTH_WIDTH:FIFO_DEPTH_WIDTH-1],r_grey_sync[FIFO_DEPTH_WIDTH-2:0]}; \r\n\t\t\t\r\n\t\t\tfor(i=0;i<=FIFO_DEPTH_WIDTH;i=i+1) r_ptr_sync[i]=^(r_grey_sync>>i); //grey code to binary converter \r\n\t\t\tdata_count_w <= (w_ptr_q>=r_ptr_sync)? (w_ptr_q-r_ptr_sync):(FIFO_DEPTH-r_ptr_sync+w_ptr_q); //compares write pointer and sync read pointer to generate data_count\r\n\t\tend\t\t\t\t\t\t\t\r\n\t end\r\n\r\n\t/////////////////////////////////////////////////////////////////////\r\n\t \r\n\t \r\n\t  ///////////////////READ CLOCK DOMAIN//////////////////////////////\r\n\t reg[FIFO_DEPTH_WIDTH:0] r_ptr_q=0; //binary counter for read pointer\r\n\t wire[FIFO_DEPTH_WIDTH:0] r_ptr_d;\r\n\t reg[FIFO_DEPTH_WIDTH:0] w_ptr_sync; //binary counter for write pointer sync to read clk\r\n\t reg[FIFO_DEPTH_WIDTH:0] w_grey_sync; //grey counter for the write pointer synchronized to read clock\r\n\t wire[FIFO_DEPTH_WIDTH:0] r_grey,r_grey_nxt; //grey counter for read pointer \r\n\t \r\n\t \r\n\t assign r_grey= r_ptr_q^(r_ptr_q>>1);  //binary to grey code conversion\r\n\t assign r_grey_nxt= (r_ptr_q+1'b1)^((r_ptr_q+1'b1)>>1); //next grey code\r\n\t assign r_ptr_d= (read && !empty)? r_ptr_q+1'b1:r_ptr_q;\r\n\t \r\n\t //register operation\r\n\t always @(posedge clk_read,negedge rst_n) begin\r\n\t\tif(!rst_n) begin\r\n\t\t\tr_ptr_q<=0;\r\n\t\t\tempty<=1;\r\n\t\tend\r\n\t\telse begin\r\n\t\t\tr_ptr_q<=r_ptr_d;\r\n\t\t\tif(read && !empty) empty <= r_grey_nxt==w_grey_sync;//empty condition\r\n\t\t\telse empty <= r_grey==w_grey_sync; \r\n\t\t\t\r\n\t\t\tfor(i=0;i<=FIFO_DEPTH_WIDTH;i=i+1) w_ptr_sync[i]=^(w_grey_sync>>i); //grey code to binary converter\r\n\t\t\tdata_count_r = (w_ptr_q>=r_ptr_sync)? (w_ptr_q-r_ptr_sync):(FIFO_DEPTH-r_ptr_sync+w_ptr_q); //compares read pointer to sync write pointer to generate data_count\r\n\t\tend\r\n\t end\r\n\t ////////////////////////////////////////////////////////////////////////\r\n\t \r\n\t \r\n\t /////////////////////CLOCK DOMAIN CROSSING//////////////////////////////\r\n\t reg[FIFO_DEPTH_WIDTH:0] r_grey_sync_temp;\r\n\t reg[FIFO_DEPTH_WIDTH:0] w_grey_sync_temp;\r\n\t always @(posedge clk_write) begin //2 D-Flipflops for reduced metastability in clock domain crossing from READ DOMAIN to WRITE DOMAIN\r\n\t\tr_grey_sync_temp<=r_grey; \r\n\t\tr_grey_sync<=r_grey_sync_temp;\r\n\t end\r\n\t always @(posedge clk_read) begin //2 D-Flipflops for reduced metastability in clock domain crossing from WRITE DOMAIN to READ DOMAIN\r\n\t\tw_grey_sync_temp<=w_grey;\r\n\t\tw_grey_sync<=w_grey_sync_temp;\r\n\t end\r\n\t \r\n\t//////////////////////////////////////////////////////////////////////////\r\n\t\r\n\tassign w_ptr=w_ptr_q[10:0];\r\n\tassign r_ptr=r_ptr_d[10:0];\r\n\t \r\n\t \r\n\t ",
+                "code": " \t localparam DATA_WIDTH=17,\r\n\t            FIFO_DEPTH_WIDTH=10,\r\n\t            FIFO_DEPTH=2**FIFO_DEPTH_WIDTH;\r\n\t \r\n\t initial begin\r\n\t\tfull=0;\r\n\t\tempty=1;\r\n\t end\r\n\t \r\n\t reg full, empty;\r\n\t reg[10:0] data_count_r,data_count_w;\r\n\t \r\n\t ///////////////////WRITE CLOCK DOMAIN//////////////////////////////\r\n\t reg[FIFO_DEPTH_WIDTH:0] w_ptr_q=0; //binary counter for write pointer\r\n\t reg[FIFO_DEPTH_WIDTH:0] r_ptr_sync; //binary pointer for read pointer sync to write clk\r\n\t wire[FIFO_DEPTH_WIDTH:0] w_grey,w_grey_nxt; //grey counter for write pointer\r\n\t reg[FIFO_DEPTH_WIDTH:0] r_grey_sync; //grey counter for the read pointer synchronized to write clock\r\n\t \r\n\t reg[3:0] i; //log_2(FIFO_DEPTH_WIDTH)\r\n\t \r\n\t assign w_grey=w_ptr_q^(w_ptr_q>>1); //binary to grey code conversion for current write pointer\r\n\t assign w_grey_nxt=(w_ptr_q+1'b1)^((w_ptr_q+1'b1)>>1);  //next grey code\r\n\t assign we= write && !full; \r\n\t \r\n\t //register operation\r\n\t always @(posedge clk_write,negedge rst_n) begin\r\n\t\tif(!rst_n) begin\r\n\t\t\tw_ptr_q<=0;\r\n\t\t\tfull<=0;\r\n\t\tend\r\n\t\telse begin\r\n\t\t\tif(write && !full) begin //write condition\r\n\t\t\t\tw_ptr_q<=w_ptr_q+1'b1; \r\n\t\t\t\tfull <= w_grey_nxt == {~r_grey_sync[FIFO_DEPTH_WIDTH:FIFO_DEPTH_WIDTH-1],r_grey_sync[FIFO_DEPTH_WIDTH-2:0]}; //algorithm for full logic which can be observed on the grey code table\r\n\t\t\tend\r\n\t\t\telse full <= w_grey == {~r_grey_sync[FIFO_DEPTH_WIDTH:FIFO_DEPTH_WIDTH-1],r_grey_sync[FIFO_DEPTH_WIDTH-2:0]}; \r\n\t\t\t\r\n\t\t\tfor(i=0;i<=FIFO_DEPTH_WIDTH;i=i+1) r_ptr_sync[i]=^(r_grey_sync>>i); //grey code to binary converter \r\n\t\t\tdata_count_w <= (w_ptr_q>=r_ptr_sync)? (w_ptr_q-r_ptr_sync):(FIFO_DEPTH-r_ptr_sync+w_ptr_q); //compares write pointer and sync read pointer to generate data_count\r\n\t\tend\t\t\t\t\t\t\t\r\n\t end\r\n\r\n\t/////////////////////////////////////////////////////////////////////\r\n\t \r\n\t \r\n\t  ///////////////////READ CLOCK DOMAIN//////////////////////////////\r\n\t reg[FIFO_DEPTH_WIDTH:0] r_ptr_q=0; //binary counter for read pointer\r\n\t wire[FIFO_DEPTH_WIDTH:0] r_ptr_d;\r\n\t reg[FIFO_DEPTH_WIDTH:0] w_ptr_sync; //binary counter for write pointer sync to read clk\r\n\t reg[FIFO_DEPTH_WIDTH:0] w_grey_sync; //grey counter for the write pointer synchronized to read clock\r\n\t wire[FIFO_DEPTH_WIDTH:0] r_grey,r_grey_nxt; //grey counter for read pointer \r\n\t \r\n\t \r\n\t assign r_grey= r_ptr_q^(r_ptr_q>>1);  //binary to grey code conversion\r\n\t assign r_grey_nxt= (r_ptr_q+1'b1)^((r_ptr_q+1'b1)>>1); //next grey code\r\n\t assign r_ptr_d= (read && !empty)? r_ptr_q+1'b1:r_ptr_q;\r\n\t \r\n\t //register operation\r\n\t always @(posedge clk_read,negedge rst_n) begin\r\n\t\tif(!rst_n) begin\r\n\t\t\tr_ptr_q<=0;\r\n\t\t\tempty<=1;\r\n\t\tend\r\n\t\telse begin\r\n\t\t\tr_ptr_q<=r_ptr_d;\r\n\t\t\tif(read && !empty) empty <= r_grey_nxt==w_grey_sync;//empty condition\r\n\t\t\telse empty <= r_grey==w_grey_sync; \r\n\t\t\t\r\n\t\t\tfor(i=0;i<=FIFO_DEPTH_WIDTH;i=i+1) w_ptr_sync[i]=^(w_grey_sync>>i); //grey code to binary converter\r\n\t\t\tdata_count_r = (w_ptr_q>=r_ptr_sync)? (w_ptr_q-r_ptr_sync):(FIFO_DEPTH-r_ptr_sync+w_ptr_q); //compares read pointer to sync write pointer to generate data_count\r\n\t\tend\r\n\t end\r\n\t ////////////////////////////////////////////////////////////////////////\r\n\t \r\n\t \r\n\t /////////////////////CLOCK DOMAIN CROSSING//////////////////////////////\r\n\t reg[FIFO_DEPTH_WIDTH:0] r_grey_sync_temp;\r\n\t reg[FIFO_DEPTH_WIDTH:0] w_grey_sync_temp;\r\n\t always @(posedge clk_write) begin //2 D-Flipflops for reduced metastability in clock domain crossing from READ DOMAIN to WRITE DOMAIN\r\n\t\tr_grey_sync_temp<=r_grey; \r\n\t\tr_grey_sync<=r_grey_sync_temp;\r\n\t end\r\n\t always @(posedge clk_read) begin //2 D-Flipflops for reduced metastability in clock domain crossing from WRITE DOMAIN to READ DOMAIN\r\n\t\tw_grey_sync_temp<=w_grey;\r\n\t\tw_grey_sync<=w_grey_sync_temp;\r\n\t end\r\n\t \r\n\t//////////////////////////////////////////////////////////////////////////\r\n\t\r\n\tassign w_ptr=w_ptr_q[9:0];\r\n\tassign r_ptr=r_ptr_d[9:0];\r\n\t \r\n\t \r\n\t ",
                 "params": [],
                 "ports": {
                   "in": [
@@ -2038,13 +2346,13 @@
                     },
                     {
                       "name": "w_ptr",
-                      "range": "[10:0]",
-                      "size": 11
+                      "range": "[9:0]",
+                      "size": 10
                     },
                     {
                       "name": "r_ptr",
-                      "range": "[10:0]",
-                      "size": 11
+                      "range": "[9:0]",
+                      "size": 10
                     }
                   ]
                 }
@@ -2059,8 +2367,8 @@
               }
             },
             {
-              "id": "92a8254a-616c-4519-b4de-2eb167bcdbbb",
-              "type": "1d9258a2bc4ed945d0b74b74233780dbf8002961",
+              "id": "85f46405-7b7b-45d8-bf36-d1c063b622e9",
+              "type": "aa4bf2e6cc723b0f5a79f110fd129184712a268d",
               "position": {
                 "x": 1112,
                 "y": 376
@@ -2078,7 +2386,7 @@
                 "port": "we"
               },
               "target": {
-                "block": "92a8254a-616c-4519-b4de-2eb167bcdbbb",
+                "block": "85f46405-7b7b-45d8-bf36-d1c063b622e9",
                 "port": "3f2843d0-3cc6-4eaf-b1d6-626734cccc96"
               },
               "vertices": [
@@ -2156,7 +2464,7 @@
                 "port": "out"
               },
               "target": {
-                "block": "92a8254a-616c-4519-b4de-2eb167bcdbbb",
+                "block": "85f46405-7b7b-45d8-bf36-d1c063b622e9",
                 "port": "48f81890-670a-41ba-8f90-d72d9ab64452"
               },
               "vertices": [
@@ -2176,7 +2484,7 @@
                 "port": "out"
               },
               "target": {
-                "block": "92a8254a-616c-4519-b4de-2eb167bcdbbb",
+                "block": "85f46405-7b7b-45d8-bf36-d1c063b622e9",
                 "port": "f9cae3c2-80d3-4173-aa41-ce7097ad51be"
               },
               "vertices": [
@@ -2238,16 +2546,10 @@
                 "port": "w_ptr"
               },
               "target": {
-                "block": "92a8254a-616c-4519-b4de-2eb167bcdbbb",
-                "port": "05533ffc-ee3b-4e61-a728-51c2cecb5518"
+                "block": "85f46405-7b7b-45d8-bf36-d1c063b622e9",
+                "port": "e3adafee-3ffa-448e-8819-36b715f5443c"
               },
-              "vertices": [
-                {
-                  "x": 992,
-                  "y": 520
-                }
-              ],
-              "size": 11
+              "size": 10
             },
             {
               "source": {
@@ -2255,50 +2557,50 @@
                 "port": "r_ptr"
               },
               "target": {
-                "block": "92a8254a-616c-4519-b4de-2eb167bcdbbb",
-                "port": "ed4d2acf-893b-48f1-b162-18e9b5d2486a"
+                "block": "85f46405-7b7b-45d8-bf36-d1c063b622e9",
+                "port": "5707eec4-e07e-4fb0-825e-9d864896a176"
               },
               "vertices": [
                 {
-                  "x": 1000,
-                  "y": 576
+                  "x": 1040,
+                  "y": 568
                 }
               ],
-              "size": 11
+              "size": 10
             },
             {
               "source": {
-                "block": "f8f3d4ff-9aba-4a33-8bc8-7fa5a1e921cb",
+                "block": "9347b8a9-b94b-4261-8455-428c88b41a6c",
                 "port": "out"
               },
               "target": {
-                "block": "92a8254a-616c-4519-b4de-2eb167bcdbbb",
-                "port": "16e5294a-aa4a-4e0b-95f3-00c9f28c0786"
+                "block": "85f46405-7b7b-45d8-bf36-d1c063b622e9",
+                "port": "e8263ad0-906f-4bb3-8911-c27c04b83345"
               },
               "vertices": [
                 {
-                  "x": 1024,
-                  "y": 560
+                  "x": 1008,
+                  "y": 600
                 }
               ],
-              "size": 16
+              "size": 17
             },
             {
               "source": {
-                "block": "92a8254a-616c-4519-b4de-2eb167bcdbbb",
-                "port": "4b70d39f-1f17-4a8e-8a5e-619513384947"
+                "block": "85f46405-7b7b-45d8-bf36-d1c063b622e9",
+                "port": "0c519e81-9535-4db8-84b8-277e33f90101"
               },
               "target": {
-                "block": "39710cbf-d7ed-4871-a865-fdddba67bc2b",
+                "block": "e9da3b0e-4156-4c92-8675-e6d416a200c9",
                 "port": "in"
               },
-              "size": 16
+              "size": 17
             }
           ]
         }
       }
     },
-    "1d9258a2bc4ed945d0b74b74233780dbf8002961": {
+    "aa4bf2e6cc723b0f5a79f110fd129184712a268d": {
       "package": {
         "name": "dual_port_ram",
         "version": "",
@@ -2346,12 +2648,12 @@
               }
             },
             {
-              "id": "4b70d39f-1f17-4a8e-8a5e-619513384947",
+              "id": "0c519e81-9535-4db8-84b8-277e33f90101",
               "type": "basic.output",
               "data": {
                 "name": "dout",
-                "range": "[15:0]",
-                "size": 16
+                "range": "[16:0]",
+                "size": 17
               },
               "position": {
                 "x": 1160,
@@ -2359,13 +2661,13 @@
               }
             },
             {
-              "id": "16e5294a-aa4a-4e0b-95f3-00c9f28c0786",
+              "id": "e8263ad0-906f-4bb3-8911-c27c04b83345",
               "type": "basic.input",
               "data": {
                 "name": "din",
-                "range": "[15:0]",
+                "range": "[16:0]",
                 "clock": false,
-                "size": 16
+                "size": 17
               },
               "position": {
                 "x": 224,
@@ -2373,13 +2675,13 @@
               }
             },
             {
-              "id": "05533ffc-ee3b-4e61-a728-51c2cecb5518",
+              "id": "e3adafee-3ffa-448e-8819-36b715f5443c",
               "type": "basic.input",
               "data": {
                 "name": "addr_a",
-                "range": "[10:0]",
+                "range": "[9:0]",
                 "clock": false,
-                "size": 11
+                "size": 10
               },
               "position": {
                 "x": 224,
@@ -2387,13 +2689,13 @@
               }
             },
             {
-              "id": "ed4d2acf-893b-48f1-b162-18e9b5d2486a",
+              "id": "5707eec4-e07e-4fb0-825e-9d864896a176",
               "type": "basic.input",
               "data": {
                 "name": "addr_b",
-                "range": "[10:0]",
+                "range": "[9:0]",
                 "clock": false,
-                "size": 11
+                "size": 10
               },
               "position": {
                 "x": 224,
@@ -2404,7 +2706,7 @@
               "id": "f46d498c-494a-432c-8021-02c5ebce2c0f",
               "type": "basic.code",
               "data": {
-                "code": "\tlocalparam ADDR_WIDTH=11,\r\n\t               DATA_WIDTH=16;\r\n\t\r\n\treg[DATA_WIDTH-1:0] ram[2**ADDR_WIDTH-1:0];\r\n\treg[ADDR_WIDTH-1:0] addr_b_q;\r\n\t\r\n\talways @(posedge clk_w) begin\r\n\t\tif(we) ram[addr_a]<=din;\r\n\tend\r\n\talways @(posedge clk_r) begin\r\n\t\taddr_b_q<=addr_b;\t\r\n\tend\r\n\tassign dout=ram[addr_b_q];",
+                "code": "\tlocalparam ADDR_WIDTH=10,\r\n\t               DATA_WIDTH=17;\r\n\t\r\n\treg[DATA_WIDTH-1:0] ram[2**ADDR_WIDTH-1:0];\r\n\treg[ADDR_WIDTH-1:0] addr_b_q;\r\n\t\r\n\talways @(posedge clk_w) begin\r\n\t\tif(we) ram[addr_a]<=din;\r\n\tend\r\n\talways @(posedge clk_r) begin\r\n\t\taddr_b_q<=addr_b;\t\r\n\tend\r\n\tassign dout=ram[addr_b_q];",
                 "params": [],
                 "ports": {
                   "in": [
@@ -2419,25 +2721,25 @@
                     },
                     {
                       "name": "din",
-                      "range": "[15:0]",
-                      "size": 16
+                      "range": "[16:0]",
+                      "size": 17
                     },
                     {
                       "name": "addr_a",
-                      "range": "[10:0]",
-                      "size": 11
+                      "range": "[9:0]",
+                      "size": 10
                     },
                     {
                       "name": "addr_b",
-                      "range": "[10:0]",
-                      "size": 11
+                      "range": "[9:0]",
+                      "size": 10
                     }
                   ],
                   "out": [
                     {
                       "name": "dout",
-                      "range": "[15:0]",
-                      "size": 16
+                      "range": "[16:0]",
+                      "size": 17
                     }
                   ]
                 }
@@ -2485,7 +2787,708 @@
             },
             {
               "source": {
-                "block": "05533ffc-ee3b-4e61-a728-51c2cecb5518",
+                "block": "e8263ad0-906f-4bb3-8911-c27c04b83345",
+                "port": "out"
+              },
+              "target": {
+                "block": "f46d498c-494a-432c-8021-02c5ebce2c0f",
+                "port": "din"
+              },
+              "size": 17
+            },
+            {
+              "source": {
+                "block": "e3adafee-3ffa-448e-8819-36b715f5443c",
+                "port": "out"
+              },
+              "target": {
+                "block": "f46d498c-494a-432c-8021-02c5ebce2c0f",
+                "port": "addr_a"
+              },
+              "size": 10
+            },
+            {
+              "source": {
+                "block": "5707eec4-e07e-4fb0-825e-9d864896a176",
+                "port": "out"
+              },
+              "target": {
+                "block": "f46d498c-494a-432c-8021-02c5ebce2c0f",
+                "port": "addr_b"
+              },
+              "size": 10
+            },
+            {
+              "source": {
+                "block": "f46d498c-494a-432c-8021-02c5ebce2c0f",
+                "port": "dout"
+              },
+              "target": {
+                "block": "0c519e81-9535-4db8-84b8-277e33f90101",
+                "port": "in"
+              },
+              "size": 17
+            }
+          ]
+        }
+      }
+    },
+    "e6a15054cb5e8937be2399f027d21639ba8d2902": {
+      "package": {
+        "name": "asyn_fifo",
+        "version": "",
+        "description": "fifo with different read/write clock domains",
+        "author": "",
+        "image": ""
+      },
+      "design": {
+        "graph": {
+          "blocks": [
+            {
+              "id": "8bb3356e-15e2-4047-9da2-c274df3d9964",
+              "type": "basic.output",
+              "data": {
+                "name": "full"
+              },
+              "position": {
+                "x": 880,
+                "y": 64
+              }
+            },
+            {
+              "id": "d5133b14-8949-42d9-abde-a580b73e0117",
+              "type": "basic.input",
+              "data": {
+                "name": "rst_n",
+                "clock": false
+              },
+              "position": {
+                "x": -344,
+                "y": 80
+              }
+            },
+            {
+              "id": "a80c3621-d849-470e-b504-32bba73a0b27",
+              "type": "basic.output",
+              "data": {
+                "name": "empty"
+              },
+              "position": {
+                "x": 880,
+                "y": 144
+              }
+            },
+            {
+              "id": "3249211a-b2cd-4941-9d1a-546ccd37346a",
+              "type": "basic.input",
+              "data": {
+                "name": "clk_write",
+                "clock": false
+              },
+              "position": {
+                "x": -344,
+                "y": 192
+              }
+            },
+            {
+              "id": "ef58acda-b3cb-4e8f-806b-698a1b90f115",
+              "type": "basic.output",
+              "data": {
+                "name": "data_count_w",
+                "range": "[10:0]",
+                "size": 11
+              },
+              "position": {
+                "x": 880,
+                "y": 224
+              }
+            },
+            {
+              "id": "7369df1f-28d3-4c2e-bdac-d425afd5f280",
+              "type": "basic.input",
+              "data": {
+                "name": "clk_read",
+                "clock": false
+              },
+              "position": {
+                "x": -344,
+                "y": 312
+              }
+            },
+            {
+              "id": "a4d9a19d-aba7-4a9f-afcc-0b35ad590e9a",
+              "type": "basic.output",
+              "data": {
+                "name": "data_count_r",
+                "range": "[10:0]",
+                "size": 11
+              },
+              "position": {
+                "x": 888,
+                "y": 312
+              }
+            },
+            {
+              "id": "2b26ad98-ae4c-41cb-8a36-e0ec12ca5438",
+              "type": "basic.input",
+              "data": {
+                "name": "write",
+                "clock": false
+              },
+              "position": {
+                "x": -344,
+                "y": 424
+              }
+            },
+            {
+              "id": "e9da3b0e-4156-4c92-8675-e6d416a200c9",
+              "type": "basic.output",
+              "data": {
+                "name": "data_read",
+                "range": "[16:0]",
+                "size": 17
+              },
+              "position": {
+                "x": 1296,
+                "y": 440
+              }
+            },
+            {
+              "id": "c299b4bf-bcfb-4497-acab-9484123dfa89",
+              "type": "basic.input",
+              "data": {
+                "name": "read",
+                "clock": false
+              },
+              "position": {
+                "x": -336,
+                "y": 536
+              }
+            },
+            {
+              "id": "9347b8a9-b94b-4261-8455-428c88b41a6c",
+              "type": "basic.input",
+              "data": {
+                "name": "data_write",
+                "range": "[16:0]",
+                "clock": false,
+                "size": 17
+              },
+              "position": {
+                "x": 888,
+                "y": 624
+              }
+            },
+            {
+              "id": "970fe62e-ffcd-403a-9592-b44e4285fc31",
+              "type": "basic.code",
+              "data": {
+                "code": " \t localparam DATA_WIDTH=17,\r\n\t            FIFO_DEPTH_WIDTH=11,\r\n\t            FIFO_DEPTH=2**FIFO_DEPTH_WIDTH;\r\n\t \r\n\t initial begin\r\n\t\tfull=0;\r\n\t\tempty=1;\r\n\t end\r\n\t \r\n\t reg full, empty;\r\n\t reg[10:0] data_count_r,data_count_w;\r\n\t \r\n\t ///////////////////WRITE CLOCK DOMAIN//////////////////////////////\r\n\t reg[FIFO_DEPTH_WIDTH:0] w_ptr_q=0; //binary counter for write pointer\r\n\t reg[FIFO_DEPTH_WIDTH:0] r_ptr_sync; //binary pointer for read pointer sync to write clk\r\n\t wire[FIFO_DEPTH_WIDTH:0] w_grey,w_grey_nxt; //grey counter for write pointer\r\n\t reg[FIFO_DEPTH_WIDTH:0] r_grey_sync; //grey counter for the read pointer synchronized to write clock\r\n\t \r\n\t reg[3:0] i; //log_2(FIFO_DEPTH_WIDTH)\r\n\t \r\n\t assign w_grey=w_ptr_q^(w_ptr_q>>1); //binary to grey code conversion for current write pointer\r\n\t assign w_grey_nxt=(w_ptr_q+1'b1)^((w_ptr_q+1'b1)>>1);  //next grey code\r\n\t assign we= write && !full; \r\n\t \r\n\t //register operation\r\n\t always @(posedge clk_write,negedge rst_n) begin\r\n\t\tif(!rst_n) begin\r\n\t\t\tw_ptr_q<=0;\r\n\t\t\tfull<=0;\r\n\t\tend\r\n\t\telse begin\r\n\t\t\tif(write && !full) begin //write condition\r\n\t\t\t\tw_ptr_q<=w_ptr_q+1'b1; \r\n\t\t\t\tfull <= w_grey_nxt == {~r_grey_sync[FIFO_DEPTH_WIDTH:FIFO_DEPTH_WIDTH-1],r_grey_sync[FIFO_DEPTH_WIDTH-2:0]}; //algorithm for full logic which can be observed on the grey code table\r\n\t\t\tend\r\n\t\t\telse full <= w_grey == {~r_grey_sync[FIFO_DEPTH_WIDTH:FIFO_DEPTH_WIDTH-1],r_grey_sync[FIFO_DEPTH_WIDTH-2:0]}; \r\n\t\t\t\r\n\t\t\tfor(i=0;i<=FIFO_DEPTH_WIDTH;i=i+1) r_ptr_sync[i]=^(r_grey_sync>>i); //grey code to binary converter \r\n\t\t\tdata_count_w <= (w_ptr_q>=r_ptr_sync)? (w_ptr_q-r_ptr_sync):(FIFO_DEPTH-r_ptr_sync+w_ptr_q); //compares write pointer and sync read pointer to generate data_count\r\n\t\tend\t\t\t\t\t\t\t\r\n\t end\r\n\r\n\t/////////////////////////////////////////////////////////////////////\r\n\t \r\n\t \r\n\t  ///////////////////READ CLOCK DOMAIN//////////////////////////////\r\n\t reg[FIFO_DEPTH_WIDTH:0] r_ptr_q=0; //binary counter for read pointer\r\n\t wire[FIFO_DEPTH_WIDTH:0] r_ptr_d;\r\n\t reg[FIFO_DEPTH_WIDTH:0] w_ptr_sync; //binary counter for write pointer sync to read clk\r\n\t reg[FIFO_DEPTH_WIDTH:0] w_grey_sync; //grey counter for the write pointer synchronized to read clock\r\n\t wire[FIFO_DEPTH_WIDTH:0] r_grey,r_grey_nxt; //grey counter for read pointer \r\n\t \r\n\t \r\n\t assign r_grey= r_ptr_q^(r_ptr_q>>1);  //binary to grey code conversion\r\n\t assign r_grey_nxt= (r_ptr_q+1'b1)^((r_ptr_q+1'b1)>>1); //next grey code\r\n\t assign r_ptr_d= (read && !empty)? r_ptr_q+1'b1:r_ptr_q;\r\n\t \r\n\t //register operation\r\n\t always @(posedge clk_read,negedge rst_n) begin\r\n\t\tif(!rst_n) begin\r\n\t\t\tr_ptr_q<=0;\r\n\t\t\tempty<=1;\r\n\t\tend\r\n\t\telse begin\r\n\t\t\tr_ptr_q<=r_ptr_d;\r\n\t\t\tif(read && !empty) empty <= r_grey_nxt==w_grey_sync;//empty condition\r\n\t\t\telse empty <= r_grey==w_grey_sync; \r\n\t\t\t\r\n\t\t\tfor(i=0;i<=FIFO_DEPTH_WIDTH;i=i+1) w_ptr_sync[i]=^(w_grey_sync>>i); //grey code to binary converter\r\n\t\t\tdata_count_r = (w_ptr_q>=r_ptr_sync)? (w_ptr_q-r_ptr_sync):(FIFO_DEPTH-r_ptr_sync+w_ptr_q); //compares read pointer to sync write pointer to generate data_count\r\n\t\tend\r\n\t end\r\n\t ////////////////////////////////////////////////////////////////////////\r\n\t \r\n\t \r\n\t /////////////////////CLOCK DOMAIN CROSSING//////////////////////////////\r\n\t reg[FIFO_DEPTH_WIDTH:0] r_grey_sync_temp;\r\n\t reg[FIFO_DEPTH_WIDTH:0] w_grey_sync_temp;\r\n\t always @(posedge clk_write) begin //2 D-Flipflops for reduced metastability in clock domain crossing from READ DOMAIN to WRITE DOMAIN\r\n\t\tr_grey_sync_temp<=r_grey; \r\n\t\tr_grey_sync<=r_grey_sync_temp;\r\n\t end\r\n\t always @(posedge clk_read) begin //2 D-Flipflops for reduced metastability in clock domain crossing from WRITE DOMAIN to READ DOMAIN\r\n\t\tw_grey_sync_temp<=w_grey;\r\n\t\tw_grey_sync<=w_grey_sync_temp;\r\n\t end\r\n\t \r\n\t//////////////////////////////////////////////////////////////////////////\r\n\t\r\n\tassign w_ptr=w_ptr_q[10:0];\r\n\tassign r_ptr=r_ptr_d[10:0];\r\n\t \r\n\t \r\n\t ",
+                "params": [],
+                "ports": {
+                  "in": [
+                    {
+                      "name": "rst_n"
+                    },
+                    {
+                      "name": "clk_write"
+                    },
+                    {
+                      "name": "clk_read"
+                    },
+                    {
+                      "name": "write"
+                    },
+                    {
+                      "name": "read"
+                    }
+                  ],
+                  "out": [
+                    {
+                      "name": "full"
+                    },
+                    {
+                      "name": "empty"
+                    },
+                    {
+                      "name": "data_count_w",
+                      "range": "[10:0]",
+                      "size": 11
+                    },
+                    {
+                      "name": "data_count_r",
+                      "range": "[10:0]",
+                      "size": 11
+                    },
+                    {
+                      "name": "we"
+                    },
+                    {
+                      "name": "w_ptr",
+                      "range": "[10:0]",
+                      "size": 11
+                    },
+                    {
+                      "name": "r_ptr",
+                      "range": "[10:0]",
+                      "size": 11
+                    }
+                  ]
+                }
+              },
+              "position": {
+                "x": -80,
+                "y": 56
+              },
+              "size": {
+                "width": 872,
+                "height": 568
+              }
+            },
+            {
+              "id": "8177d141-ce86-4889-82df-e15f99213842",
+              "type": "a3bd66273c791f02fb2ada801284c1d5864dddb4",
+              "position": {
+                "x": 1112,
+                "y": 376
+              },
+              "size": {
+                "width": 96,
+                "height": 192
+              }
+            }
+          ],
+          "wires": [
+            {
+              "source": {
+                "block": "970fe62e-ffcd-403a-9592-b44e4285fc31",
+                "port": "we"
+              },
+              "target": {
+                "block": "8177d141-ce86-4889-82df-e15f99213842",
+                "port": "3f2843d0-3cc6-4eaf-b1d6-626734cccc96"
+              },
+              "vertices": [
+                {
+                  "x": 976,
+                  "y": 456
+                }
+              ]
+            },
+            {
+              "source": {
+                "block": "d5133b14-8949-42d9-abde-a580b73e0117",
+                "port": "out"
+              },
+              "target": {
+                "block": "970fe62e-ffcd-403a-9592-b44e4285fc31",
+                "port": "rst_n"
+              }
+            },
+            {
+              "source": {
+                "block": "3249211a-b2cd-4941-9d1a-546ccd37346a",
+                "port": "out"
+              },
+              "target": {
+                "block": "970fe62e-ffcd-403a-9592-b44e4285fc31",
+                "port": "clk_write"
+              }
+            },
+            {
+              "source": {
+                "block": "7369df1f-28d3-4c2e-bdac-d425afd5f280",
+                "port": "out"
+              },
+              "target": {
+                "block": "970fe62e-ffcd-403a-9592-b44e4285fc31",
+                "port": "clk_read"
+              },
+              "vertices": [
+                {
+                  "x": -152,
+                  "y": 344
+                }
+              ]
+            },
+            {
+              "source": {
+                "block": "2b26ad98-ae4c-41cb-8a36-e0ec12ca5438",
+                "port": "out"
+              },
+              "target": {
+                "block": "970fe62e-ffcd-403a-9592-b44e4285fc31",
+                "port": "write"
+              },
+              "vertices": [
+                {
+                  "x": -136,
+                  "y": 456
+                }
+              ]
+            },
+            {
+              "source": {
+                "block": "c299b4bf-bcfb-4497-acab-9484123dfa89",
+                "port": "out"
+              },
+              "target": {
+                "block": "970fe62e-ffcd-403a-9592-b44e4285fc31",
+                "port": "read"
+              }
+            },
+            {
+              "source": {
+                "block": "3249211a-b2cd-4941-9d1a-546ccd37346a",
+                "port": "out"
+              },
+              "target": {
+                "block": "8177d141-ce86-4889-82df-e15f99213842",
+                "port": "48f81890-670a-41ba-8f90-d72d9ab64452"
+              },
+              "vertices": [
+                {
+                  "x": 888,
+                  "y": 16
+                },
+                {
+                  "x": 1008,
+                  "y": 368
+                }
+              ]
+            },
+            {
+              "source": {
+                "block": "7369df1f-28d3-4c2e-bdac-d425afd5f280",
+                "port": "out"
+              },
+              "target": {
+                "block": "8177d141-ce86-4889-82df-e15f99213842",
+                "port": "f9cae3c2-80d3-4173-aa41-ce7097ad51be"
+              },
+              "vertices": [
+                {
+                  "x": -176,
+                  "y": 40
+                },
+                {
+                  "x": 1048,
+                  "y": 72
+                }
+              ]
+            },
+            {
+              "source": {
+                "block": "970fe62e-ffcd-403a-9592-b44e4285fc31",
+                "port": "full"
+              },
+              "target": {
+                "block": "8bb3356e-15e2-4047-9da2-c274df3d9964",
+                "port": "in"
+              }
+            },
+            {
+              "source": {
+                "block": "970fe62e-ffcd-403a-9592-b44e4285fc31",
+                "port": "empty"
+              },
+              "target": {
+                "block": "a80c3621-d849-470e-b504-32bba73a0b27",
+                "port": "in"
+              }
+            },
+            {
+              "source": {
+                "block": "970fe62e-ffcd-403a-9592-b44e4285fc31",
+                "port": "data_count_w"
+              },
+              "target": {
+                "block": "ef58acda-b3cb-4e8f-806b-698a1b90f115",
+                "port": "in"
+              },
+              "size": 11
+            },
+            {
+              "source": {
+                "block": "970fe62e-ffcd-403a-9592-b44e4285fc31",
+                "port": "data_count_r"
+              },
+              "target": {
+                "block": "a4d9a19d-aba7-4a9f-afcc-0b35ad590e9a",
+                "port": "in"
+              },
+              "size": 11
+            },
+            {
+              "source": {
+                "block": "9347b8a9-b94b-4261-8455-428c88b41a6c",
+                "port": "out"
+              },
+              "target": {
+                "block": "8177d141-ce86-4889-82df-e15f99213842",
+                "port": "e8263ad0-906f-4bb3-8911-c27c04b83345"
+              },
+              "vertices": [
+                {
+                  "x": 1008,
+                  "y": 600
+                }
+              ],
+              "size": 17
+            },
+            {
+              "source": {
+                "block": "8177d141-ce86-4889-82df-e15f99213842",
+                "port": "0c519e81-9535-4db8-84b8-277e33f90101"
+              },
+              "target": {
+                "block": "e9da3b0e-4156-4c92-8675-e6d416a200c9",
+                "port": "in"
+              },
+              "size": 17
+            },
+            {
+              "source": {
+                "block": "970fe62e-ffcd-403a-9592-b44e4285fc31",
+                "port": "w_ptr"
+              },
+              "target": {
+                "block": "8177d141-ce86-4889-82df-e15f99213842",
+                "port": "aeac35d7-259f-4a17-a485-e4eed9329618"
+              },
+              "size": 11
+            },
+            {
+              "source": {
+                "block": "970fe62e-ffcd-403a-9592-b44e4285fc31",
+                "port": "r_ptr"
+              },
+              "target": {
+                "block": "8177d141-ce86-4889-82df-e15f99213842",
+                "port": "4a269e49-ae61-4e1e-bd46-738f426e66b3"
+              },
+              "vertices": [
+                {
+                  "x": 1024,
+                  "y": 568
+                }
+              ],
+              "size": 11
+            }
+          ]
+        }
+      }
+    },
+    "a3bd66273c791f02fb2ada801284c1d5864dddb4": {
+      "package": {
+        "name": "dual_port_ram",
+        "version": "",
+        "description": "uses block ram with separate read/write clock",
+        "author": "",
+        "image": ""
+      },
+      "design": {
+        "graph": {
+          "blocks": [
+            {
+              "id": "f9cae3c2-80d3-4173-aa41-ce7097ad51be",
+              "type": "basic.input",
+              "data": {
+                "name": "clk_r",
+                "clock": false
+              },
+              "position": {
+                "x": 224,
+                "y": 360
+              }
+            },
+            {
+              "id": "48f81890-670a-41ba-8f90-d72d9ab64452",
+              "type": "basic.input",
+              "data": {
+                "name": "clk_w",
+                "clock": false
+              },
+              "position": {
+                "x": 224,
+                "y": 416
+              }
+            },
+            {
+              "id": "3f2843d0-3cc6-4eaf-b1d6-626734cccc96",
+              "type": "basic.input",
+              "data": {
+                "name": "we",
+                "clock": false
+              },
+              "position": {
+                "x": 224,
+                "y": 464
+              }
+            },
+            {
+              "id": "0c519e81-9535-4db8-84b8-277e33f90101",
+              "type": "basic.output",
+              "data": {
+                "name": "dout",
+                "range": "[16:0]",
+                "size": 17
+              },
+              "position": {
+                "x": 1160,
+                "y": 488
+              }
+            },
+            {
+              "id": "e8263ad0-906f-4bb3-8911-c27c04b83345",
+              "type": "basic.input",
+              "data": {
+                "name": "din",
+                "range": "[16:0]",
+                "clock": false,
+                "size": 17
+              },
+              "position": {
+                "x": 224,
+                "y": 512
+              }
+            },
+            {
+              "id": "aeac35d7-259f-4a17-a485-e4eed9329618",
+              "type": "basic.input",
+              "data": {
+                "name": "addr_a",
+                "range": "[10:0]",
+                "clock": false,
+                "size": 11
+              },
+              "position": {
+                "x": 224,
+                "y": 568
+              }
+            },
+            {
+              "id": "4a269e49-ae61-4e1e-bd46-738f426e66b3",
+              "type": "basic.input",
+              "data": {
+                "name": "addr_b",
+                "range": "[10:0]",
+                "clock": false,
+                "size": 11
+              },
+              "position": {
+                "x": 224,
+                "y": 616
+              }
+            },
+            {
+              "id": "f46d498c-494a-432c-8021-02c5ebce2c0f",
+              "type": "basic.code",
+              "data": {
+                "code": "\tlocalparam ADDR_WIDTH=11,\r\n\t               DATA_WIDTH=17;\r\n\t\r\n\treg[DATA_WIDTH-1:0] ram[2**ADDR_WIDTH-1:0];\r\n\treg[ADDR_WIDTH-1:0] addr_b_q;\r\n\t\r\n\talways @(posedge clk_w) begin\r\n\t\tif(we) ram[addr_a]<=din;\r\n\tend\r\n\talways @(posedge clk_r) begin\r\n\t\taddr_b_q<=addr_b;\t\r\n\tend\r\n\tassign dout=ram[addr_b_q];",
+                "params": [],
+                "ports": {
+                  "in": [
+                    {
+                      "name": "clk_r"
+                    },
+                    {
+                      "name": "clk_w"
+                    },
+                    {
+                      "name": "we"
+                    },
+                    {
+                      "name": "din",
+                      "range": "[16:0]",
+                      "size": 17
+                    },
+                    {
+                      "name": "addr_a",
+                      "range": "[10:0]",
+                      "size": 11
+                    },
+                    {
+                      "name": "addr_b",
+                      "range": "[10:0]",
+                      "size": 11
+                    }
+                  ],
+                  "out": [
+                    {
+                      "name": "dout",
+                      "range": "[16:0]",
+                      "size": 17
+                    }
+                  ]
+                }
+              },
+              "position": {
+                "x": 480,
+                "y": 368
+              },
+              "size": {
+                "width": 600,
+                "height": 304
+              }
+            }
+          ],
+          "wires": [
+            {
+              "source": {
+                "block": "f9cae3c2-80d3-4173-aa41-ce7097ad51be",
+                "port": "out"
+              },
+              "target": {
+                "block": "f46d498c-494a-432c-8021-02c5ebce2c0f",
+                "port": "clk_r"
+              }
+            },
+            {
+              "source": {
+                "block": "48f81890-670a-41ba-8f90-d72d9ab64452",
+                "port": "out"
+              },
+              "target": {
+                "block": "f46d498c-494a-432c-8021-02c5ebce2c0f",
+                "port": "clk_w"
+              }
+            },
+            {
+              "source": {
+                "block": "3f2843d0-3cc6-4eaf-b1d6-626734cccc96",
+                "port": "out"
+              },
+              "target": {
+                "block": "f46d498c-494a-432c-8021-02c5ebce2c0f",
+                "port": "we"
+              }
+            },
+            {
+              "source": {
+                "block": "e8263ad0-906f-4bb3-8911-c27c04b83345",
+                "port": "out"
+              },
+              "target": {
+                "block": "f46d498c-494a-432c-8021-02c5ebce2c0f",
+                "port": "din"
+              },
+              "size": 17
+            },
+            {
+              "source": {
+                "block": "f46d498c-494a-432c-8021-02c5ebce2c0f",
+                "port": "dout"
+              },
+              "target": {
+                "block": "0c519e81-9535-4db8-84b8-277e33f90101",
+                "port": "in"
+              },
+              "size": 17
+            },
+            {
+              "source": {
+                "block": "aeac35d7-259f-4a17-a485-e4eed9329618",
                 "port": "out"
               },
               "target": {
@@ -2496,7 +3499,7 @@
             },
             {
               "source": {
-                "block": "ed4d2acf-893b-48f1-b162-18e9b5d2486a",
+                "block": "4a269e49-ae61-4e1e-bd46-738f426e66b3",
                 "port": "out"
               },
               "target": {
@@ -2504,28 +3507,6 @@
                 "port": "addr_b"
               },
               "size": 11
-            },
-            {
-              "source": {
-                "block": "16e5294a-aa4a-4e0b-95f3-00c9f28c0786",
-                "port": "out"
-              },
-              "target": {
-                "block": "f46d498c-494a-432c-8021-02c5ebce2c0f",
-                "port": "din"
-              },
-              "size": 16
-            },
-            {
-              "source": {
-                "block": "f46d498c-494a-432c-8021-02c5ebce2c0f",
-                "port": "dout"
-              },
-              "target": {
-                "block": "4b70d39f-1f17-4a8e-8a5e-619513384947",
-                "port": "in"
-              },
-              "size": 16
             }
           ]
         }

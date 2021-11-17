@@ -86,19 +86,19 @@
           },
           "position": {
             "x": -120,
-            "y": 320
+            "y": 296
           }
         },
         {
-          "id": "3e06c7b8-b07c-49a6-9dfc-099cac26ec35",
+          "id": "942a77cc-1405-4818-9909-9bd06978fe1b",
           "type": "basic.input",
           "data": {
-            "name": "empty_fifo",
+            "name": "sobel",
             "pins": [
               {
                 "index": "0",
-                "name": "",
-                "value": "0"
+                "name": "NULL",
+                "value": "NULL"
               }
             ],
             "virtual": true,
@@ -106,7 +106,7 @@
           },
           "position": {
             "x": -120,
-            "y": 376
+            "y": 344
           }
         },
         {
@@ -142,6 +142,82 @@
           "position": {
             "x": 1120,
             "y": 384
+          }
+        },
+        {
+          "id": "7654a37e-4ed6-4a99-8e51-86a1e0977834",
+          "type": "basic.input",
+          "data": {
+            "name": "threshold",
+            "range": "[7:0]",
+            "pins": [
+              {
+                "index": "7",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "6",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "5",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "4",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "3",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "2",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "1",
+                "name": "",
+                "value": ""
+              },
+              {
+                "index": "0",
+                "name": "",
+                "value": ""
+              }
+            ],
+            "virtual": true,
+            "clock": false
+          },
+          "position": {
+            "x": -120,
+            "y": 392
+          }
+        },
+        {
+          "id": "3e06c7b8-b07c-49a6-9dfc-099cac26ec35",
+          "type": "basic.input",
+          "data": {
+            "name": "empty_fifo",
+            "pins": [
+              {
+                "index": "0",
+                "name": "",
+                "value": "0"
+              }
+            ],
+            "virtual": true,
+            "clock": false
+          },
+          "position": {
+            "x": -120,
+            "y": 440
           }
         },
         {
@@ -237,7 +313,7 @@
           },
           "position": {
             "x": -120,
-            "y": 432
+            "y": 488
           }
         },
         {
@@ -268,7 +344,7 @@
           "id": "1438ec0d-ec27-4d1e-9473-bd3c24ed700f",
           "type": "basic.code",
           "data": {
-            "code": "\t reg rd_en;\r\n\t //FSM state declarations\r\n\t localparam delay=0,\r\n\t\t\t\t\tidle=1,\r\n\t\t\t\t\tdisplay=2;\r\n\t\t\t\t\t\r\n\t reg[1:0] state_q,state_d;\r\n\t reg[7:0] red,green,blue;\r\n\t wire[1:0] tmds_red,tmds_green,tmds_blue,tmds_clk;\r\n\t wire clk_5x;\r\n\t \r\n\t //register operations\r\n\t always @(posedge clk_vga,negedge rst_n) begin\r\n\t\tif(!rst_n) begin\r\n\t\t\tstate_q<=delay;\r\n\t\tend\r\n\t\telse begin\r\n\t\t\tstate_q<=state_d;\r\n\t\tend\r\n\t end\r\n\t \r\n\t //FSM next-state logic\r\n\t always @* begin\r\n\t state_d=state_q;\r\n\t rd_en=0;\r\n\t red=0;\r\n\t green=0;\r\n\t blue=0;\r\n\t\t\t\r\n\t\tcase(state_q)\r\n\t\t  delay: if(pixel_x==640 && pixel_y==480) state_d=idle; //delay of one frame(33ms) needed to start up the camera\r\n\t\t\tidle:  if(pixel_x==0 && pixel_y==0 && !empty_fifo) begin //wait for pixel-data coming from asyn_fifo \t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\tred=din[15:11]<<3;\r\n\t\t\t\t\t\t\tgreen=din[10:5]<<2;\r\n\t\t\t\t\t\t\tblue=din[4:0]<<3;\r\n\t\t\t\t\t\t\trd_en=1;\t\r\n\t\t\t\t\t\t\tstate_d=display;\r\n\t\t\t\t\tend\r\n\t\tdisplay: if(!blank) begin //we will continue to read the asyn_fifo as long as current pixel coordinate is inside the visible screen(640x480) \r\n\t\t\t\t\t\t\tred=din[15:11]<<3;\r\n\t\t\t\t\t\t\tgreen=din[10:5]<<2;\r\n\t\t\t\t\t\t\tblue=din[4:0]<<3;\r\n\t\t\t\t\t\t\trd_en=1;\t\r\n\t\t\t\t\tend\r\n\t\tdefault: state_d=delay;\r\n\t\tendcase\r\n\t end\r\n \r\n\t\r\n\t//ODDR instantiatons for Double-Data Rate operation\r\n\t\tODDRX1F ddr0_clock (.D0(tmds_clk   [0] ), .D1(tmds_clk   [1] ), .Q(gpdi_dp[3]), .SCLK(clk_5x), .RST(0));\r\n        ODDRX1F ddr0_red   (.D0(tmds_red   [0] ), .D1(tmds_red   [1] ), .Q(gpdi_dp[2]), .SCLK(clk_5x), .RST(0));\r\n        ODDRX1F ddr0_green (.D0(tmds_green [0] ), .D1(tmds_green [1] ), .Q(gpdi_dp[1]), .SCLK(clk_5x), .RST(0));\r\n        ODDRX1F ddr0_blue  (.D0(tmds_blue  [0] ), .D1(tmds_blue  [1] ), .Q(gpdi_dp[0]), .SCLK(clk_5x), .RST(0));\r\n\t\t\r\n\t\t",
+            "code": "\t reg rd_en;\r\n\t //FSM state declarations\r\n\t //FSM state declarations\r\n\t localparam delay=0,\r\n\t\t\t\t\tidle=1,\r\n\t\t\t\t\tdisplay=2,\r\n\t\t\t\t\talign_frame=1,\r\n\t\t\t\t\talign_idle=0;\r\n\t\t\t\t\t\r\n\t reg[1:0] state_q,state_d;\r\n\t reg[7:0] red,green,blue;\r\n\t wire[1:0] tmds_red,tmds_green,tmds_blue,tmds_clk;\r\n\t wire clk_5x;\r\n\t reg sobel_prev,state_align_q,state_align_d;\r\n\t reg[4:0] align_count_q,align_count_d;\r\n\t \r\n\t //register operations\r\n\t always @(posedge clk_vga,negedge rst_n) begin\r\n\t\tif(!rst_n) begin\r\n\t\t\tstate_q<=delay;\r\n\t\t\tstate_align_q<=align_idle;\r\n\t\t\talign_count_q<=0;\r\n\t\tend\r\n\t\telse begin\r\n\t\t\tstate_q<=state_d;\r\n\t\t\tsobel_prev<=sobel;\r\n\t\t\tstate_align_q<=state_align_d;\r\n\t\t\talign_count_q<=align_count_d;\r\n\t\tend\r\n\t end\r\n\t \r\n\t //FSM next-state logic\r\n\t always @* begin\r\n\t state_d=state_q;\r\n\t state_align_d=state_align_q;\r\n\t align_count_d=align_count_q;\r\n\t rd_en=0;\r\n\t red=0;\r\n\t green=0;\r\n\t blue=0;\r\n\t\t\t\r\n\t\tcase(state_q)\r\n\t\t delay: if(blank) begin\r\n\t\t\t\t\tstate_d=idle;\r\n\t\t\t\t\tstate_align_d=align_frame;\r\n\t\t\t\t end\r\n\t\t\tidle:  if(pixel_x==0 && pixel_y==0 && !empty_fifo) begin //wait for pixel-data coming from asyn_fifo \t\r\n\t\t\t\t\t\t\tif(sobel) begin\r\n\t\t\t\t\t\t\t\tred=(din>threshold)? 8'hff:0;\r\n    \t\t\t\t\t\t\tgreen=(din>threshold)? 8'hff:0;\r\n    \t\t\t\t\t\t\tblue=(din>threshold)? 8'hff:0;\r\n\t\t\t\t\t\t\t\t/*red=din[7:0]; //grayscale\r\n\t\t\t\t\t\t\t\tgreen=din[7:0];\r\n\t\t\t\t\t\t\t\tblue=din[7:0];*/\r\n\t\t\t\t\t\t\tend\r\n\t\t\t\t\t\t\telse begin\r\n\t\t\t\t\t\t\t\tred=din[15:11]<<3;\r\n\t\t\t\t\t\t\t\tgreen=din[10:5]<<2;\r\n\t\t\t\t\t\t\t\tblue=din[4:0]<<3;\r\n\t\t\t\t\t\t\tend\r\n\t\t\t\t\t\t\trd_en=1;\t\r\n\t\t\t\t\t\t\tstate_d=display;\r\n\t\t\t\t\tend\r\n\t\tdisplay: if(!blank) begin //we will continue to read the asyn_fifo as long as current pixel coordinate is inside the visible screen(640x480) \r\n\t\t\t\t\t\t\tif(sobel) begin\r\n\t\t\t\t\t\t\t\tred=(din>threshold)? 8'hff:0;\r\n\t\t\t\t\t\t\t\tgreen=(din>threshold)? 8'hff:0;\r\n\t\t\t\t\t\t\t\tblue=(din>threshold)? 8'hff:0;\r\n\t\t\t\t\t\t\tend\r\n\t\t\t\t\t\t\telse begin\r\n\t\t\t\t\t\t\t\tred=din[15:11]<<3;\r\n\t\t\t\t\t\t\t\tgreen=din[10:5]<<2;\r\n\t\t\t\t\t\t\t\tblue=din[4:0]<<3;\r\n\t\t\t\t\t\t\tend\r\n\t\t\t\t\t\t\trd_en=1;\t\r\n\t\t\t\t\tend\r\n\t\tdefault: state_d=delay;\r\n\t\tendcase\r\n\t\t\r\n\t\t\r\n\t\t//automatically aligns frame when display changes (sobel-> rgb or rgb->sobel)\r\n\t\tcase(state_align_q)\r\n\t\t\t align_idle: if(sobel_prev != sobel) begin \r\n\t\t\t\t\t\t\t\tstate_align_d=align_frame;\r\n\t\t\t\t\t\t\t\talign_count_d=0;\r\n\t\t\t\t\t\t end\r\n\t\t\talign_frame:  begin\r\n\t\t\t\t\t\t\tif(sobel && din[8] && din[15:9]==0 && rd_en) begin //align sobel frame \r\n\t\t\t\t\t\t\t\tif(pixel_x==0 && pixel_y==0) begin \r\n\t\t\t\t\t\t\t\t\trd_en=1;\r\n\t\t\t\t\t\t\t\t\talign_count_d=align_count_q+1'b1;\r\n\t\t\t\t\t\t\t\t\tif(align_count_q==5) state_align_d=align_idle; //align for 5 frames\r\n\t\t\t\t\t\t\t\tend\r\n\t\t\t\t\t\t\t\telse rd_en=0;\r\n\t\t\t\t\t\t\tend\r\n\t\t\t\t\t\t\telse if(!sobel && din==16'b00000_000000_11111 && rd_en) begin //align rgb fram\r\n\t\t\t\t\t\t\t\tif(pixel_x==0 && pixel_y==0) begin \r\n\t\t\t\t\t\t\t\t\trd_en=1;\r\n\t\t\t\t\t\t\t\t\talign_count_d=align_count_q+1'b1;\r\n\t\t\t\t\t\t\t\t\tif(align_count_q==5) state_align_d=align_idle; //align for 5 frames\r\n\t\t\t\t\t\t\t\tend\r\n\t\t\t\t\t\t\t\telse rd_en=0;\r\n\t\t\t\t\t\t\tend\r\n\t\t\t\t\t\t  end\r\n\t\t\t\tdefault: state_align_d=align_idle;\r\n\t\tendcase\r\n\t end\r\n \r\n\t\r\n\t//ODDR instantiatons for Double-Data Rate operation\r\n\t\tODDRX1F ddr0_clock (.D0(tmds_clk   [0] ), .D1(tmds_clk   [1] ), .Q(gpdi_dp[3]), .SCLK(clk_5x), .RST(0));\r\n        ODDRX1F ddr0_red   (.D0(tmds_red   [0] ), .D1(tmds_red   [1] ), .Q(gpdi_dp[2]), .SCLK(clk_5x), .RST(0));\r\n        ODDRX1F ddr0_green (.D0(tmds_green [0] ), .D1(tmds_green [1] ), .Q(gpdi_dp[1]), .SCLK(clk_5x), .RST(0));\r\n        ODDRX1F ddr0_blue  (.D0(tmds_blue  [0] ), .D1(tmds_blue  [1] ), .Q(gpdi_dp[0]), .SCLK(clk_5x), .RST(0));\r\n\t\t\r\n\t\t",
             "params": [],
             "ports": {
               "in": [
@@ -280,6 +356,14 @@
                 },
                 {
                   "name": "rst_n"
+                },
+                {
+                  "name": "sobel"
+                },
+                {
+                  "name": "threshold",
+                  "range": "[7:0]",
+                  "size": 8
                 },
                 {
                   "name": "empty_fifo"
@@ -681,6 +765,27 @@
               "y": 1104
             }
           ]
+        },
+        {
+          "source": {
+            "block": "942a77cc-1405-4818-9909-9bd06978fe1b",
+            "port": "out"
+          },
+          "target": {
+            "block": "1438ec0d-ec27-4d1e-9473-bd3c24ed700f",
+            "port": "sobel"
+          }
+        },
+        {
+          "source": {
+            "block": "7654a37e-4ed6-4a99-8e51-86a1e0977834",
+            "port": "out"
+          },
+          "target": {
+            "block": "1438ec0d-ec27-4d1e-9473-bd3c24ed700f",
+            "port": "threshold"
+          },
+          "size": 8
         }
       ]
     }
